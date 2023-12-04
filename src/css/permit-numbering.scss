@@ -2,228 +2,244 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: black;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    max-width: 500px;
+    margin: 3rem auto 0;
+    border: 5px solid black;
+
 
     h1 {
         width: 100%;
         text-align: center;
         color: white;
+        background-color: rgba(0, 0, 0, 0.5);
         padding: 2rem 0;
         text-transform: uppercase;
         font-size: 1.75rem;
+        font-weight: 500;
     }
 
-    .visible-element {
-        opacity: 1;
-        pointer-events: all;
-        position: relative;
-        top: 0;
-        transition: all 250ms ease-in-out;
-    }
-
-    .invisible-element {
-        opacity: 0;
-        pointer-events: none;
-        position: relative;
-        top: -1rem;
-    }
-
-    .btn-box {
-        margin-top: 1rem;
-    }
-
-    .btn {
-        padding: 0.5rem 2rem;
-        border: none;
-        text-transform: uppercase;
-        cursor: pointer;
-        background-color: darkslategrey;
-        color: white;
-        font-weight: 600;
-        letter-spacing: 1px;
-        font-size: 0.8rem;
-    }
-
-    .btn:hover {
-        background-color: lightblue;
-        color: black;
-    }
-
-    .btn:not(:last-child) {
-        margin-right: 2rem;
-    }
 
     #frame {
         display: flex;
         width: 100%;
-        height: 100%;
-        max-width: 500px;
-        background-color: rgb(70, 130, 180);
         overflow: hidden;
-    }
+        border: 5px solid yellow;
 
-    .box {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-width: 100%;
-        background-color: black;
-        padding: 2rem 1rem;
-        transition: all 250ms ease-in-out;
-    }
+        .visible-element {
+            /*opacity: 1;
+            pointer-events: all;
+            position: relative;
+            top: 0;
+            transition: all 250ms ease-in-out;*/
+            //height: unset;
+            display: unset;
+        }
 
-    .box h3 {
-        color: white;
-        margin: 0 1rem 2rem;
-        width: 100%;
-    }
+        .invisible-element {
+            /*opacity: 0;
+            pointer-events: none;
+            position: relative;
+            top: -1rem;*/
+            height: 0;
+            display: none;
+        }
 
-    #filter-box {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 2rem;
-        height: 3rem;
-        width: 100%;
-    }
+        .btn-box {
+            margin-top: 1rem;
+        }
 
-    #filter-box input {
-        padding: 0 1rem 0 0.5rem;
-        height: 100%;
-        font-size: 1rem;
-        border: none;
-        outline: none;
-        width: 100%;
-        background-color: white;
-    }
+        .btn {
+            padding: 0.5rem 2rem;
+            border: none;
+            text-transform: uppercase;
+            cursor: pointer;
+            background-color: darkslategrey;
+            color: white;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
 
-    #filter-box .icon {
-        padding: 0.25rem;
-        font-size: 3rem;
-        position: relative;
-        background-color: white;
-        cursor: text;
-    }
+            &:hover {
+                background-color: lightblue;
+                color: black;
+            }
 
-    #user-box {
-        margin-bottom: 1rem;
-    }
+            &:not(:last-child) {
+                margin-right: 2rem;
+            }
+        }
 
-    #user-box div {
-        display: flex;
-        align-items: center;
-    }
+        .slide {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.65);
+            padding: 2rem;
+            transition: all 250ms ease-in-out;
+            border: 5px solid green;
+            min-width: 100%;
 
-    #user-box div:not(:last-child) {
-        margin-bottom: 1rem;
-    }
+            h3 {
+                color: white;
+                margin: 0 1rem 2rem;
+                width: 100%;
+            }
+        }
 
-    #user-box div span {
-        display: block;
-        color: white;
-        width: 5.5rem;
-    }
+        .step1 {
+            $filter-box-height: 3rem;
 
-    #user-box div .icon {
-        font-size: 1.25rem;
-        margin-left: -2rem;
-        position: relative;
-        top: -0.5rem;
-        z-index: 9;
-    }
+            #filter-box {
+                display: flex;
+                justify-content: center;
+                height: $filter-box-height;
+                width: 100%;
+                border: 2px solid yellow;
 
-    #user-box div select,
-    #user-box div input {
-        width: 13rem;
-        height: 3rem;
-        border: none;
-        outline: none;
-        font-size: 1rem;
-        padding: 0.5rem 1rem;
-    }
+                input {
+                    padding: 0 1rem 0 0.5rem;
+                    height: 100%;
+                    font-size: 1rem;
+                    border: none;
+                    outline: none;
+                    width: 100%;
+                }
 
-    #user-box div .container {
-        background-color: white;
-    }
+                .icon {
+                    padding: 0.25rem;
+                    font-size: $filter-box-height;
+                    position: relative;
+                    background-color: white;
+                    cursor: text;
+                }
+            }
+        }
 
-    #user-box div select {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        cursor: pointer;
-        position: relative;
-        background-color: transparent;
-        z-index: 10;
-    }
+        #contractor-option-box {
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(134, 112, 112);
+            background-color: rgb(70, 130, 180);
+            background-color: black;
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+            max-height: 12.75rem;
+            overflow: scroll;
+            overflow-x: hidden;
+            width: 100%;
+            border: 2px solid yellow;
 
-    #user-box div select option {
-        padding: 1rem;
-    }
 
-    #contractor-option-box {
-        display: flex;
-        flex-direction: column;
-        background-color: rgb(134, 112, 112);
-        background-color: rgb(70, 130, 180);
-        background-color: black;
-        margin-bottom: 1rem;
-        max-height: 12.75rem;
-        overflow: scroll;
-        overflow-x: hidden;
-        width: 100%;
-    }
+            .contractor {
+                background-color: lightgray;
+                padding: 0.5rem 1rem;
+                cursor: pointer;
+                transition: all 150ms ease-in-out;
 
-    .contractor {
-        background-color: lightgray;
-        padding: 0.5rem 1rem;
-        cursor: pointer;
-        transition: all 150ms ease-in-out;
-    }
+                &:not(:last-child) {
+                    margin-bottom: 0.5rem;
+                }
+            }
 
-    .contractor:not(:last-child) {
-        margin-bottom: 0.5rem;
-    }
+            &:hover {
+                background-color: darkred !important;
+                color: white !important;
+            }
 
-    .contractor:hover {
-        background-color: darkred !important;
-        color: white !important;
-    }
+            &::-webkit-scrollbar {
+                width: 12px;
+            }
 
-    #contractor-option-box::-webkit-scrollbar {
-        width: 12px;
-    }
+            &::-webkit-scrollbar-thumb {
+                background-color: darkslategray;
+                border-radius: 6px;
+            }
 
-    #contractor-option-box::-webkit-scrollbar-thumb {
-        background-color: darkslategray;
-        border-radius: 6px;
-    }
+            &::-webkit-scrollbar-track {
+                background-color: rgb(70, 130, 180);
+            }
 
-    #contractor-option-box::-webkit-scrollbar-track {
-        background-color: rgb(70, 130, 180);
-    }
+            &::-webkit-scrollbar-thumb:hover {
+                background-color: black;
+            }
 
-    #contractor-option-box::-webkit-scrollbar-thumb:hover {
-        background-color: black;
-    }
+            &::-webkit-scrollbar-corner {
+                background-color: blue;
+            }
+        }
 
-    #contractor-option-box::-webkit-scrollbar-corner {
-        background-color: blue;
-    }
 
-    #display {
-        padding: 1rem 1rem 0.25rem;
-        background-color: lightblue;
-        width: 100%;
-        margin-bottom: 1rem;
-    }
+        #user-box {
+            margin-bottom: 1rem;
+        }
 
-    #display div {
-        margin-bottom: 0.25rem;
-    }
+        #user-box div {
+            display: flex;
+            align-items: center;
+        }
 
-    #display span {
-        display: inline-block;
-        width: 9rem;
+        #user-box div:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+
+        #user-box div span {
+            display: block;
+            color: white;
+            width: 5.5rem;
+        }
+
+        #user-box div .icon {
+            font-size: 1.25rem;
+            margin-left: -2rem;
+            position: relative;
+            top: -0.5rem;
+            z-index: 9;
+        }
+
+        #user-box div select,
+        #user-box div input {
+            width: 13rem;
+            height: 3rem;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+        }
+
+        #user-box div .container {
+            background-color: white;
+        }
+
+        #user-box div select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            cursor: pointer;
+            position: relative;
+            background-color: transparent;
+            z-index: 10;
+        }
+
+        #user-box div select option {
+            padding: 1rem;
+        }
+
+
+        #display {
+            padding: 1rem 1rem 0.25rem;
+            background-color: lightblue;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        #display div {
+            margin-bottom: 0.25rem;
+        }
+
+        #display span {
+            display: inline-block;
+            width: 9rem;
+        }
     }
 }

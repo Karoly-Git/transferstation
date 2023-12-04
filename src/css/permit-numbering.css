@@ -2,35 +2,47 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: black;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  max-width: 500px;
+  margin: 3rem auto 0;
+  border: 5px solid black;
 }
 .permit-numbering h1 {
   width: 100%;
   text-align: center;
   color: white;
+  background-color: rgba(0, 0, 0, 0.5);
   padding: 2rem 0;
   text-transform: uppercase;
   font-size: 1.75rem;
+  font-weight: 500;
 }
-.permit-numbering .visible-element {
-  opacity: 1;
+.permit-numbering #frame {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  border: 5px solid yellow;
+}
+.permit-numbering #frame .visible-element {
+  /*opacity: 1;
   pointer-events: all;
   position: relative;
   top: 0;
-  transition: all 250ms ease-in-out;
+  transition: all 250ms ease-in-out;*/
+  display: unset;
 }
-.permit-numbering .invisible-element {
-  opacity: 0;
+.permit-numbering #frame .invisible-element {
+  /*opacity: 0;
   pointer-events: none;
   position: relative;
-  top: -1rem;
+  top: -1rem;*/
+  height: 0;
+  display: none;
 }
-.permit-numbering .btn-box {
+.permit-numbering #frame .btn-box {
   margin-top: 1rem;
 }
-.permit-numbering .btn {
+.permit-numbering #frame .btn {
   padding: 0.5rem 2rem;
   border: none;
   text-transform: uppercase;
@@ -41,82 +53,117 @@
   letter-spacing: 1px;
   font-size: 0.8rem;
 }
-.permit-numbering .btn:hover {
+.permit-numbering #frame .btn:hover {
   background-color: lightblue;
   color: black;
 }
-.permit-numbering .btn:not(:last-child) {
+.permit-numbering #frame .btn:not(:last-child) {
   margin-right: 2rem;
 }
-.permit-numbering #frame {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  max-width: 500px;
-  background-color: rgb(70, 130, 180);
-  overflow: hidden;
-}
-.permit-numbering .box {
+.permit-numbering #frame .slide {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 100%;
-  background-color: black;
-  padding: 2rem 1rem;
+  background-color: rgba(0, 0, 0, 0.65);
+  padding: 2rem;
   transition: all 250ms ease-in-out;
+  border: 5px solid green;
+  min-width: 100%;
 }
-.permit-numbering .box h3 {
+.permit-numbering #frame .slide h3 {
   color: white;
   margin: 0 1rem 2rem;
   width: 100%;
 }
-.permit-numbering #filter-box {
+.permit-numbering #frame .step1 #filter-box {
   display: flex;
   justify-content: center;
-  margin-bottom: 2rem;
   height: 3rem;
   width: 100%;
+  border: 2px solid yellow;
 }
-.permit-numbering #filter-box input {
+.permit-numbering #frame .step1 #filter-box input {
   padding: 0 1rem 0 0.5rem;
   height: 100%;
   font-size: 1rem;
   border: none;
   outline: none;
   width: 100%;
-  background-color: white;
 }
-.permit-numbering #filter-box .icon {
+.permit-numbering #frame .step1 #filter-box .icon {
   padding: 0.25rem;
   font-size: 3rem;
   position: relative;
   background-color: white;
   cursor: text;
 }
-.permit-numbering #user-box {
+.permit-numbering #frame #contractor-option-box {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(134, 112, 112);
+  background-color: rgb(70, 130, 180);
+  background-color: black;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  max-height: 12.75rem;
+  overflow: scroll;
+  overflow-x: hidden;
+  width: 100%;
+  border: 2px solid yellow;
+}
+.permit-numbering #frame #contractor-option-box .contractor {
+  background-color: lightgray;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 150ms ease-in-out;
+}
+.permit-numbering #frame #contractor-option-box .contractor:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+.permit-numbering #frame #contractor-option-box:hover {
+  background-color: darkred !important;
+  color: white !important;
+}
+.permit-numbering #frame #contractor-option-box::-webkit-scrollbar {
+  width: 12px;
+}
+.permit-numbering #frame #contractor-option-box::-webkit-scrollbar-thumb {
+  background-color: darkslategray;
+  border-radius: 6px;
+}
+.permit-numbering #frame #contractor-option-box::-webkit-scrollbar-track {
+  background-color: rgb(70, 130, 180);
+}
+.permit-numbering #frame #contractor-option-box::-webkit-scrollbar-thumb:hover {
+  background-color: black;
+}
+.permit-numbering #frame #contractor-option-box::-webkit-scrollbar-corner {
+  background-color: blue;
+}
+.permit-numbering #frame #user-box {
   margin-bottom: 1rem;
 }
-.permit-numbering #user-box div {
+.permit-numbering #frame #user-box div {
   display: flex;
   align-items: center;
 }
-.permit-numbering #user-box div:not(:last-child) {
+.permit-numbering #frame #user-box div:not(:last-child) {
   margin-bottom: 1rem;
 }
-.permit-numbering #user-box div span {
+.permit-numbering #frame #user-box div span {
   display: block;
   color: white;
   width: 5.5rem;
 }
-.permit-numbering #user-box div .icon {
+.permit-numbering #frame #user-box div .icon {
   font-size: 1.25rem;
   margin-left: -2rem;
   position: relative;
   top: -0.5rem;
   z-index: 9;
 }
-.permit-numbering #user-box div select,
-.permit-numbering #user-box div input {
+.permit-numbering #frame #user-box div select,
+.permit-numbering #frame #user-box div input {
   width: 13rem;
   height: 3rem;
   border: none;
@@ -124,10 +171,10 @@
   font-size: 1rem;
   padding: 0.5rem 1rem;
 }
-.permit-numbering #user-box div .container {
+.permit-numbering #frame #user-box div .container {
   background-color: white;
 }
-.permit-numbering #user-box div select {
+.permit-numbering #frame #user-box div select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -136,60 +183,19 @@
   background-color: transparent;
   z-index: 10;
 }
-.permit-numbering #user-box div select option {
+.permit-numbering #frame #user-box div select option {
   padding: 1rem;
 }
-.permit-numbering #contractor-option-box {
-  display: flex;
-  flex-direction: column;
-  background-color: rgb(134, 112, 112);
-  background-color: rgb(70, 130, 180);
-  background-color: black;
-  margin-bottom: 1rem;
-  max-height: 12.75rem;
-  overflow: scroll;
-  overflow-x: hidden;
-  width: 100%;
-}
-.permit-numbering .contractor {
-  background-color: lightgray;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  transition: all 150ms ease-in-out;
-}
-.permit-numbering .contractor:not(:last-child) {
-  margin-bottom: 0.5rem;
-}
-.permit-numbering .contractor:hover {
-  background-color: darkred !important;
-  color: white !important;
-}
-.permit-numbering #contractor-option-box::-webkit-scrollbar {
-  width: 12px;
-}
-.permit-numbering #contractor-option-box::-webkit-scrollbar-thumb {
-  background-color: darkslategray;
-  border-radius: 6px;
-}
-.permit-numbering #contractor-option-box::-webkit-scrollbar-track {
-  background-color: rgb(70, 130, 180);
-}
-.permit-numbering #contractor-option-box::-webkit-scrollbar-thumb:hover {
-  background-color: black;
-}
-.permit-numbering #contractor-option-box::-webkit-scrollbar-corner {
-  background-color: blue;
-}
-.permit-numbering #display {
+.permit-numbering #frame #display {
   padding: 1rem 1rem 0.25rem;
   background-color: lightblue;
   width: 100%;
   margin-bottom: 1rem;
 }
-.permit-numbering #display div {
+.permit-numbering #frame #display div {
   margin-bottom: 0.25rem;
 }
-.permit-numbering #display span {
+.permit-numbering #frame #display span {
   display: inline-block;
   width: 9rem;
 }/*# sourceMappingURL=permit-numbering.css.map */

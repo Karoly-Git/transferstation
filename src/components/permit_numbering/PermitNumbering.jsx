@@ -25,10 +25,10 @@ export default function PermitNumbering() {
     const [searchInputValue, setSearchInputValue] = useState(""); // resetProcess 1
     const [passwordInputValue, setPasswordInputValue] = useState(""); // resetProcess 2
     const [displayedContractors, setDisplayedContractors] = useState([]); // resetProcess 3
-    const [marginLeft, setMarginLeft] = useState(0);
     const [selectedUserValue, setSelectedUserValue] = useState(0); // resetProcess 4
     const [currentUserID, setCurrentUserID] = useState(0); // resetProcess 5
     const [currentContractor, setCurrentContractor] = useState(""); // resetProcess 6
+    const [activeSlide, setActiveSlide] = useState(1);
 
     function resetProcess() {
         setSearchInputValue(""); // const 1
@@ -89,180 +89,162 @@ export default function PermitNumbering() {
         passwordInputRef.current.focus();
     }
 
-    function moveStep(action) {
-        let frameWidth = document.querySelector("#frame").clientWidth;
-        if (action === "back") {
-            setMarginLeft((prevWidth) => prevWidth + frameWidth);
-        } else if (action === "reset") {
-            setMarginLeft((prevWidth) => 0);
-        } else {
-            setMarginLeft((prevWidth) => prevWidth - frameWidth);
-        }
-    }
-
     return (
         <div className="permit-numbering">
+
             <h1>Permit numbering</h1>
 
             <div id="frame">
-                <div className="box step1" style={{ marginLeft: `${marginLeft}px` }}>
-                    <h3>Choose contractor</h3>
-                    <div id="filter-box">
-                        <SearchIcon
-                            className="icon"
-                            id="search-icon"
-                            onClick={() => searchInputRef.current.focus()}
-                        />
-                        <input
-                            onChange={handleSearchInputChange}
-                            value={searchInputValue}
-                            type="text"
-                            ref={searchInputRef}
-                            placeholder="Search for contractor..."
-                        />
-                    </div>
+                {activeSlide === 1 &&
+                    <div className="slide step1">
 
-                    <div
-                        id="contractor-option-box"
-                        className={
-                            displayedContractors.length
-                                ? "visible-element"
-                                : "invisible-element"
-                        }
-                        style={
-                            displayedContractors.length <= 5 ? { overflow: "hidden" } : {}
-                        }
-                    >
-                        {displayedContractors.map((contractor, index) => (
-                            <div
-                                key={index}
-                                className="contractor"
-                                onClick={() => {
-                                    if (currentContractor === "") {
-                                        setCurrentContractor(contractor.name);
-                                        let one = displayedContractors.filter(
-                                            (c) => c.name === contractor.name,
-                                        );
-                                        setDisplayedContractors([...one]);
-                                    } else {
-                                        let filteredContractors = contractors.filter((e) =>
-                                            e.name
-                                                .toLocaleLowerCase()
-                                                .includes(searchInputValue.toLocaleLowerCase()),
-                                        );
-                                        setDisplayedContractors([...filteredContractors]);
-                                        setCurrentContractor("");
-                                    }
-                                }}
-                                style={
-                                    currentContractor === ""
-                                        ? { backgroundColor: "lightgray", color: "black" }
-                                        : { backgroundColor: "darkred", color: "white" }
-                                }
-                            >
-                                {contractor.name}
-                            </div>
-                        ))}
-                    </div>
-                    <div
-                        className={
-                            currentContractor
-                                ? "btn-box visible-element"
-                                : "btn-box invisible-element"
-                        }
-                    >
-                        <NavButton moveStep={moveStep} action="next" />
-                    </div>
-                </div>
+                        <h3>Choose contractor</h3>
 
-                <div className="box step2">
-                    <h3>Verify it's you</h3>
-                    <div id="user-box">
-                        <div>
-                            <span>Users:</span>
-                            <div className="container">
-                                <select
-                                    ref={userSelectRef}
-                                    value={selectedUserValue}
-                                    name="users"
-                                    id="users"
-                                    onChange={handleUserOptionChange}
-                                >
-                                    {users
-                                        .sort((a, b) => a.name.localeCompare(b.name))
-                                        .map((user, index) => (
-                                            <option key={index} value={user.id}>
-                                                {user.name}
-                                            </option>
-                                        ))}
-                                </select>
-                            </div>
-                            <ArrowIcon className="icon" />
-                        </div>
-                        <div
-                            className={
-                                currentUserID === 0 ? "invisible-element" : "visible-element"
-                            }
-                        >
-                            <span>Password:</span>
+                        <div id="filter-box">
+                            <SearchIcon
+                                className="icon"
+                                id="search-icon"
+                                onClick={() => searchInputRef.current.focus()}
+                            />
                             <input
-                                type="password"
-                                onChange={handlePasswordInputChange}
-                                value={passwordInputValue}
-                                ref={passwordInputRef}
+                                onChange={handleSearchInputChange}
+                                value={searchInputValue}
+                                type="text"
+                                ref={searchInputRef}
+                                placeholder="Search for contractor..."
                             />
                         </div>
-                    </div>
 
-                    <div className="btn-box">
-                        <NavButton moveStep={moveStep} action="back" />
-                        <span
-                            onClick={addWorkPermit}
-                            className={
-                                users.filter((user) => user.id === currentUserID)[0]
-                                    .password === passwordInputValue
-                                    ? "visible-element"
-                                    : "invisible-element"
-                            }
+                        <div id="contractor-option-box"
+                            className={displayedContractors.length ? "visible-element" : "invisible-element"}
+                            style={displayedContractors.length <= 5 ? { overflow: "hidden" } : {}}>
+                            {displayedContractors.map((contractor, index) => (
+                                <div
+                                    key={index}
+                                    className="contractor"
+                                    onClick={() => {
+                                        if (currentContractor === "") {
+                                            setCurrentContractor(contractor.name);
+                                            let one = displayedContractors.filter(
+                                                (c) => c.name === contractor.name,
+                                            );
+                                            setDisplayedContractors([...one]);
+                                        } else {
+                                            let filteredContractors = contractors.filter((e) =>
+                                                e.name
+                                                    .toLocaleLowerCase()
+                                                    .includes(searchInputValue.toLocaleLowerCase()),
+                                            );
+                                            setDisplayedContractors([...filteredContractors]);
+                                            setCurrentContractor("");
+                                        }
+                                    }}
+                                    style={
+                                        currentContractor === ""
+                                            ? { backgroundColor: "lightgray", color: "black" }
+                                            : { backgroundColor: "darkred", color: "white" }
+                                    }
+                                >
+                                    {contractor.name}
+                                </div>
+                            ))}
+                        </div>
+                        <div
+                            className={currentContractor ? "btn-box visible-element" : "btn-box invisible-element"}
                         >
-                            <NavButton moveStep={moveStep} action="request" />
-                        </span>
+                            <NavButton className='btn' text="next" onClick={() => setActiveSlide(2)} />
+                        </div>
+                    </div>}
 
-                    </div>
-                </div>
+                {activeSlide === 2 &&
+                    <div className="slide step2">
+                        <h3>Verify it's you</h3>
+                        <div id="user-box">
+                            <div>
+                                <span>Users:</span>
+                                <div className="container">
+                                    <select
+                                        ref={userSelectRef}
+                                        value={selectedUserValue}
+                                        name="users"
+                                        id="users"
+                                        onChange={handleUserOptionChange}
+                                    >
+                                        {users
+                                            .sort((a, b) => a.name.localeCompare(b.name))
+                                            .map((user, index) => (
+                                                <option key={index} value={user.id}>
+                                                    {user.name}
+                                                </option>
+                                            ))}
+                                    </select>
+                                </div>
+                                <ArrowIcon className="icon" />
+                            </div>
+                            <div
+                                className={currentUserID === 0 ? "invisible-element" : "visible-element"}>
+                                <span>Password:</span>
+                                <input
+                                    type="password"
+                                    onChange={handlePasswordInputChange}
+                                    value={passwordInputValue}
+                                    ref={passwordInputRef}
+                                />
+                            </div>
+                        </div>
 
-                <div className="box step3">
-                    <h3>New permit details</h3>
-                    <div id="display">
-                        <div>
-                            <span>Permit number:</span>
-                            {nextPermitID - 1}
+                        <div className="btn-box">
+                            <NavButton className='btn' text="back" onClick={() => setActiveSlide(1)} />
+                            <NavButton
+                                className={
+                                    users.filter((user) => user.id === currentUserID)[0]
+                                        .password === passwordInputValue
+                                        ? "btn visible-element"
+                                        : "btn invisible-element"
+                                }
+                                text="request"
+                                onClick={() => {
+                                    addWorkPermit();
+                                    setActiveSlide(3);
+                                }}
+                            />
                         </div>
-                        <div>
-                            <span>Contractor:</span>
-                            {currentContractor}
-                        </div>
-                        <div>
-                            <span>Issued by:</span>
-                            {users.filter((user) => user.id === currentUserID)[0].name}
-                        </div>
-                        <div>
-                            <span>Date:</span>
-                            {
-                                workPermits.filter(
-                                    (permit) => permit.id === nextPermitID - 1,
-                                )[0].date
-                            }
-                        </div>
-                    </div>
+                    </div>}
 
-                    <div className="btn-box">
-                        <span onClick={resetProcess}>
-                            <NavButton moveStep={moveStep} action="reset" />
-                        </span>
-                    </div>
-                </div>
+                {activeSlide === 3 &&
+                    <div className="slide step3">
+                        <h3>New permit details</h3>
+                        <div id="display">
+                            <div>
+                                <span>Permit number:</span>
+                                {nextPermitID - 1}
+                            </div>
+                            <div>
+                                <span>Contractor:</span>
+                                {currentContractor}
+                            </div>
+                            <div>
+                                <span>Issued by:</span>
+                                {users.filter((user) => user.id === currentUserID)[0].name}
+                            </div>
+                            <div>
+                                <span>Date:</span>
+                                {
+                                    workPermits.filter(
+                                        (permit) => permit.id === nextPermitID - 1,
+                                    )[0].date
+                                }
+                            </div>
+                        </div>
+
+                        <div className="btn-box">
+                            <span onClick={resetProcess}>
+                                <NavButton text="reset" />
+                            </span>
+                        </div>
+                    </div>}
             </div>
+
         </div>
     );
 }
