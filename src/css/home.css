@@ -1,0 +1,23 @@
+.home {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.home .logo {
+  margin-top: 3rem;
+  width: 12rem;
+}
+.home h1 {
+  text-align: center;
+  padding: 2rem;
+  margin-top: 3rem;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+  font-weight: 500;
+  color: white;
+}
+@media only screen and (max-width: 700px) {
+  .home .logo {
+    width: 10rem;
+  }
+}/*# sourceMappingURL=home.css.map */

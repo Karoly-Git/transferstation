@@ -1,0 +1,190 @@
+.mrf-admin {
+  font-family: sans-serif;
+}
+.mrf-admin label {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  margin: 0.25rem;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+  transition: color 150ms ease-in-out;
+}
+.mrf-admin label input {
+  margin-left: 0.75rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  cursor: pointer;
+}
+.mrf-admin label:hover {
+  color: black;
+}
+.mrf-admin .head-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  background-color: black;
+  color: white;
+  width: 100%;
+  min-height: 60px;
+}
+.mrf-admin .head-box .icon {
+  font-size: 2rem;
+}
+.mrf-admin .head-box .add-user-icon {
+  cursor: pointer;
+}
+.mrf-admin .register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem;
+  width: 550px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: red;
+  transition: height 500ms ease-in-out;
+  height: 60px;
+  overflow: hidden;
+}
+.mrf-admin .register form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 350px;
+  padding: 2rem;
+  height: 340px;
+}
+.mrf-admin .register form input {
+  padding: 0.5rem;
+  font-size: 1.5rem;
+}
+.mrf-admin .register form button {
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  border: 3px solid white;
+}
+.mrf-admin .register .worker {
+  color: white;
+}
+.mrf-admin .register .worker * {
+  font-weight: 100;
+}
+.mrf-admin .register .worker .inactive {
+  color: red;
+}
+.mrf-admin .register .hidden-inactive {
+  display: none;
+}
+.mrf-admin .register-open {
+  height: 400px;
+}
+.mrf-admin .filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem;
+  width: 550px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: red;
+}
+.mrf-admin .filter div {
+  display: flex;
+}
+.mrf-admin .filter .filter-box {
+  width: 100%;
+}
+.mrf-admin .filter .filter-box label {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 4rem;
+}
+.mrf-admin .filter .is-active {
+  background-color: transparent;
+}
+.mrf-admin .filter .is-at-work {
+  background-color: transparent;
+}
+.mrf-admin .filter .activity {
+  background-color: transparent;
+}
+.mrf-admin .filter .middle-container {
+  background-color: green;
+  width: 100%;
+}
+.mrf-admin .filter .middle-container .activity-box {
+  flex-direction: column;
+  align-items: flex-end;
+  background-color: darkred;
+  width: 50%;
+}
+.mrf-admin .filter .middle-container .activity-box label {
+  padding-right: 4rem;
+  text-transform: capitalize;
+}
+.mrf-admin .filter .middle-container .right-box {
+  flex-direction: column;
+  width: 50%;
+}
+.mrf-admin .filter .middle-container .right-box .materials {
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+  background-color: brown;
+}
+.mrf-admin .filter .middle-container .right-box .materials label {
+  padding-right: 4rem;
+}
+.mrf-admin .filter .middle-container .right-box .shift-box {
+  justify-content: flex-end;
+  width: 100%;
+}
+.mrf-admin .filter .middle-container .right-box .shift-box label:nth-child(2) {
+  padding-right: 4rem;
+}
+.mrf-admin .filter .dates {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.mrf-admin .filter .dates input {
+  width: 50%;
+  padding: 0.5rem;
+  padding-right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.mrf-admin .filter .times {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.mrf-admin .filter .times input {
+  width: 50%;
+  padding: 0.5rem;
+  padding-right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.mrf-admin .filter .data-box {
+  flex-direction: column;
+  color: white;
+}
+.mrf-admin .filter .data-box * {
+  font-weight: 100;
+}
+@media only screen and (max-width: 650px) {
+  .mrf-admin .register,
+.mrf-admin .filter {
+    width: 85%;
+  }
+}/*# sourceMappingURL=mrf-admin.css.map */

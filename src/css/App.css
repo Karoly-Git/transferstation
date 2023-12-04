@@ -1,0 +1,23 @@
+@import './mobile-navigation.css';
+@import './home.css';
+@import './mrf-dressing.css';
+@import './mrf-admin.css';
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.App {
+  height: 100vh;
+  background-color: black;
+  background-color: transparent;
+  background-image: url("../img/bg .jpg");
+  background-size: cover;
+  background-position: center;
+}/*# sourceMappingURL=app.css.map */

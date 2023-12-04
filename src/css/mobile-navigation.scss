@@ -1,0 +1,197 @@
+.mobile-navigation {
+    background-color: rgb(1, 50, 74);
+    display: flex;
+    flex-direction: column;
+    height: 4rem;
+    width: 100%;
+
+    a:hover {
+        text-decoration: underline !important;
+        text-underline-offset: 4px;
+    }
+
+    li {
+        transition: margin-top, 350ms ease-in-out;
+        //box-shadow: 5px 5px white;
+    }
+
+    .icon {
+        transition: all 350ms ease-in-out;
+        color: white;
+    }
+
+    .sub1-title,
+    .sub2-title {
+        cursor: pointer;
+    }
+}
+
+.head-container {
+    width: 100%;
+    min-height: 100%;
+    background-color: rgb(1, 50, 74);
+    position: relative;
+    z-index: 1000;
+
+    .hamburger-box {
+        display: flex;
+        flex-direction: column;
+        width: 2rem;
+        height: 2rem;
+        margin-top: 1rem;
+        margin-left: 1rem;
+        overflow: hidden;
+
+        .icon {
+            min-height: 2rem;
+            min-width: 2rem;
+            transform: rotate(0deg);
+            transition: margin-top, 350ms ease-in-out;
+            cursor: pointer;
+        }
+
+        .icon:first-child {
+            margin-top: -2rem;
+        }
+    }
+
+    .hamburger-box-open {
+        .icon {
+            transform: rotate(90deg);
+        }
+
+        .icon:first-child {
+            margin-top: 0;
+        }
+    }
+}
+
+.menu {
+    transition: margin-top, 350ms ease-in-out;
+    max-width: 340px;
+    user-select: none;
+    position: relative;
+    z-index: 900;
+
+    .mrf-logs-list,
+    .ts-logs-list {
+        background-color: rgb(0, 99, 148);
+    }
+
+    .mrf,
+    .ts {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        margin-top: -1px;
+
+        .sub1-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgb(1, 50, 74);
+            height: 50px;
+            border-top: 1px solid rgb(78, 112, 129);
+            border-bottom: 1px solid rgb(78, 112, 129);
+
+            div,
+            h2 {
+                display: flex;
+                height: 100%;
+                align-items: center;
+            }
+
+            h2 {
+                width: 100%;
+                padding-left: 1rem;
+                font-weight: 500;
+                //font-size: 1.2rem;
+                color: white;
+            }
+
+            div {
+                min-width: 50px;
+            }
+
+            .icon-box {
+                justify-content: center;
+                width: 50px;
+                font-size: 1.1rem;
+                border-left: 1px solid rgb(78, 112, 129);
+
+                .icon {
+                    min-width: 1.5rem;
+                    height: 1.5rem;
+                }
+            }
+        }
+
+        .sub1-menu {
+            display: flex;
+            flex-direction: column;
+            list-style: none;
+            background-color: rgb(0, 73, 110);
+            transition: margin-top, 350ms ease-in-out;
+            overflow: hidden;
+
+            li {
+                display: flex;
+                align-items: center;
+                margin-left: 2rem;
+                min-height: 50px;
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    text-decoration: none;
+                    font-size: 1.1rem;
+                    color: white;
+                }
+
+                .icon {
+                    width: 1.2rem;
+                    height: 1.2rem;
+                    margin-right: 1rem;
+                }
+            }
+
+            li:not(li:first-child) {
+                border-top: 1px solid white;
+            }
+
+            .has-sub {
+                flex-direction: column;
+
+                .sub2-title {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: calc(100% - 0px);
+                    border-bottom: 1px solid white;
+                    margin-bottom: -1px;
+
+                    h3 {
+                        color: white;
+                        font-weight: 500;
+                    }
+
+                    .icon:not(h3 .icon) {
+                        margin: 0;
+                        width: 50px;
+                        height: 50px;
+                        padding: 15px;
+                    }
+                }
+
+                .sub2-menu {
+                    width: 100%;
+                    overflow: hidden;
+
+                    li {
+                        margin-left: 3rem;
+                    }
+                }
+            }
+        }
+    }
+}

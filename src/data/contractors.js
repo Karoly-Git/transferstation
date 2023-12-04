@@ -1,0 +1,98 @@
+export const contractors = [
+    {
+        id: 1,
+        name: "WME12",
+        note: "",
+        isActive: true,
+    },
+    {
+        id: 2,
+        name: "Pellenc12",
+        note: "",
+        isActive: true,
+    },
+    {
+        id: 3,
+        name: "SVL12",
+        note: "",
+        isActive: true,
+    },
+    {
+        id: 4,
+        name: "TSF12",
+        note: "",
+        isActive: true,
+    },
+    {
+        id: 5,
+        name: "Rushlift12",
+        note: "",
+        isActive: true,
+    },
+    {
+        id: 6,
+        name: "Solitair2",
+        note: "",
+        isActive: true,
+    },
+    {
+        id: 7,
+        name: "JCB",
+        note: "",
+        isActive: true,
+    },
+    {
+        id: 8,
+        name: "Eagles",
+        note: "",
+        isActive: true,
+    },
+    {
+        id: 9,
+        name: "ACE",
+        note: "",
+        isActive: true,
+    },
+    {
+        id: 10,
+        name: "Filtrex",
+        note: "",
+        isActive: true,
+    },
+    {
+        id: 11,
+        name: "SAB Uk",
+        note: "",
+        isActive: true,
+    },
+    {
+        id: 12,
+        name: "Elekta System",
+        note: "",
+        isActive: true,
+    },
+    {
+        id: 13,
+        name: "Trade Street",
+        note: "",
+        isActive: true,
+    },
+    {
+        id: 14,
+        name: "KC Drains",
+        note: "",
+        isActive: true,
+    },
+    {
+        id: 15,
+        name: "Hokay Techs",
+        note: "",
+        isActive: true,
+    },
+    {
+        id: 16,
+        name: "SM Engineering",
+        note: "",
+        isActive: true,
+    },
+];

@@ -1,0 +1,186 @@
+.mobile-navigation {
+  background-color: rgb(1, 50, 74);
+  display: flex;
+  flex-direction: column;
+  height: 4rem;
+  width: 100%;
+}
+.mobile-navigation a:hover {
+  text-decoration: underline !important;
+  text-underline-offset: 4px;
+}
+.mobile-navigation li {
+  transition: margin-top, 350ms ease-in-out;
+}
+.mobile-navigation .icon {
+  transition: all 350ms ease-in-out;
+  color: white;
+}
+.mobile-navigation .sub1-title,
+.mobile-navigation .sub2-title {
+  cursor: pointer;
+}
+
+.head-container {
+  width: 100%;
+  min-height: 100%;
+  background-color: rgb(1, 50, 74);
+  position: relative;
+  z-index: 1000;
+}
+.head-container .hamburger-box {
+  display: flex;
+  flex-direction: column;
+  width: 2rem;
+  height: 2rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  overflow: hidden;
+}
+.head-container .hamburger-box .icon {
+  min-height: 2rem;
+  min-width: 2rem;
+  transform: rotate(0deg);
+  transition: margin-top, 350ms ease-in-out;
+  cursor: pointer;
+}
+.head-container .hamburger-box .icon:first-child {
+  margin-top: -2rem;
+}
+.head-container .hamburger-box-open .icon {
+  transform: rotate(90deg);
+}
+.head-container .hamburger-box-open .icon:first-child {
+  margin-top: 0;
+}
+
+.menu {
+  transition: margin-top, 350ms ease-in-out;
+  max-width: 340px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  position: relative;
+  z-index: 900;
+}
+.menu .mrf-logs-list,
+.menu .ts-logs-list {
+  background-color: rgb(0, 99, 148);
+}
+.menu .mrf,
+.menu .ts {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin-top: -1px;
+}
+.menu .mrf .sub1-title,
+.menu .ts .sub1-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(1, 50, 74);
+  height: 50px;
+  border-top: 1px solid rgb(78, 112, 129);
+  border-bottom: 1px solid rgb(78, 112, 129);
+}
+.menu .mrf .sub1-title div,
+.menu .mrf .sub1-title h2,
+.menu .ts .sub1-title div,
+.menu .ts .sub1-title h2 {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+.menu .mrf .sub1-title h2,
+.menu .ts .sub1-title h2 {
+  width: 100%;
+  padding-left: 1rem;
+  font-weight: 500;
+  color: white;
+}
+.menu .mrf .sub1-title div,
+.menu .ts .sub1-title div {
+  min-width: 50px;
+}
+.menu .mrf .sub1-title .icon-box,
+.menu .ts .sub1-title .icon-box {
+  justify-content: center;
+  width: 50px;
+  font-size: 1.1rem;
+  border-left: 1px solid rgb(78, 112, 129);
+}
+.menu .mrf .sub1-title .icon-box .icon,
+.menu .ts .sub1-title .icon-box .icon {
+  min-width: 1.5rem;
+  height: 1.5rem;
+}
+.menu .mrf .sub1-menu,
+.menu .ts .sub1-menu {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  background-color: rgb(0, 73, 110);
+  transition: margin-top, 350ms ease-in-out;
+  overflow: hidden;
+}
+.menu .mrf .sub1-menu li,
+.menu .ts .sub1-menu li {
+  display: flex;
+  align-items: center;
+  margin-left: 2rem;
+  min-height: 50px;
+}
+.menu .mrf .sub1-menu li a,
+.menu .ts .sub1-menu li a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 1.1rem;
+  color: white;
+}
+.menu .mrf .sub1-menu li .icon,
+.menu .ts .sub1-menu li .icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-right: 1rem;
+}
+.menu .mrf .sub1-menu li:not(li:first-child),
+.menu .ts .sub1-menu li:not(li:first-child) {
+  border-top: 1px solid white;
+}
+.menu .mrf .sub1-menu .has-sub,
+.menu .ts .sub1-menu .has-sub {
+  flex-direction: column;
+}
+.menu .mrf .sub1-menu .has-sub .sub2-title,
+.menu .ts .sub1-menu .has-sub .sub2-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(100% - 0px);
+  border-bottom: 1px solid white;
+  margin-bottom: -1px;
+}
+.menu .mrf .sub1-menu .has-sub .sub2-title h3,
+.menu .ts .sub1-menu .has-sub .sub2-title h3 {
+  color: white;
+  font-weight: 500;
+}
+.menu .mrf .sub1-menu .has-sub .sub2-title .icon:not(h3 .icon),
+.menu .ts .sub1-menu .has-sub .sub2-title .icon:not(h3 .icon) {
+  margin: 0;
+  width: 50px;
+  height: 50px;
+  padding: 15px;
+}
+.menu .mrf .sub1-menu .has-sub .sub2-menu,
+.menu .ts .sub1-menu .has-sub .sub2-menu {
+  width: 100%;
+  overflow: hidden;
+}
+.menu .mrf .sub1-menu .has-sub .sub2-menu li,
+.menu .ts .sub1-menu .has-sub .sub2-menu li {
+  margin-left: 3rem;
+}/*# sourceMappingURL=mobile-navigation.css.map */
