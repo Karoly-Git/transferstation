@@ -2,31 +2,21 @@
 import React, { useState, useRef, useEffect } from "react";
 // Icon Imports
 import { IoIosSearch as SearchIcon } from "react-icons/io";
-import { IoIosArrowDown as ArrowIcon } from "react-icons/io";
 // Style Imports
 import "../../css/permit-numbering.css";
 // Component Imports
 import NavButton from "./NavButton";
 // Animation Imports
 import { motion as m } from 'framer-motion';
-// Form Handling Imports
-import { useForm } from 'react-hook-form';
-import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
-
 
 export default function PermitNumbering() {
-    // Constants
-    const INITIAL_PERMIT_ID = 4;
-
     // State
     const [contractors, setContractors] = useState([]);
     const [users, setUsers] = useState([]);
     const [permits, setPermits] = useState([]);
 
-    const [nextPermitID, setNextPermitID] = useState(INITIAL_PERMIT_ID);
+    const [nextPermitID, setNextPermitID] = useState(0);
     const [workPermits, setWorkPermits] = useState(permits);
-    const [newWorkPermits, setNewPermits] = useState({});
     const searchInputRef = useRef();
     const passwordInputRef = useRef();
     const userSelectRef = useRef();
@@ -39,6 +29,46 @@ export default function PermitNumbering() {
     const [activeSlide, setActiveSlide] = useState(1);
 
     const URL = "https://transferstation-ac939f5c93a1.herokuapp.com/";
+    //const URL = "http://localhost:8000/";
+
+
+    const sendPermitToBackend = async () => {
+        const newPermit = {
+            id: null,
+            issuer: users.filter((user) => user.id === currentUserID)[0].name,
+            contractor: currentContractor,
+            date: null,
+            time: null,
+            note: "-",
+        };
+
+        try {
+            const response = await fetch(URL + 'send-new-permit',
+                {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: {
+                        'Content-type': 'application/json',
+                    },
+                    body: JSON.stringify(newPermit),
+                }
+            );
+
+            if (!response.ok) {
+                console.log('Please add error handling!!!');
+                throw new Error(`Failed to send data. Status: ${response.status}`);
+            }
+
+            const result = await response.json();
+            console.log('Data sent successfully:', result);
+
+        } catch (error) {
+            console.error('Error:', error.message);
+        } /*finally {
+            Do something if needed
+        }*/
+    };
+
 
     useEffect(() => {
         const fetchData = async (filename, setData) => {
@@ -52,6 +82,11 @@ export default function PermitNumbering() {
                 const jsonData = await response.json();
 
                 setData(jsonData);
+
+                if (filename === 'permits') {
+                    setNextPermitID(jsonData.length + 1);
+                    console.log('Next Permit ID:', jsonData.length + 1);
+                }
 
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -251,6 +286,7 @@ export default function PermitNumbering() {
                                 }
                                 text="request"
                                 onClick={() => {
+                                    sendPermitToBackend();
                                     addWorkPermit();
                                     setActiveSlide(3);
                                 }}
