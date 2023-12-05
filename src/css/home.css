@@ -3,21 +3,28 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
 }
-.home .logo {
+.home .cory-logo {
   margin-top: 3rem;
+  width: 30rem;
+}
+.home .webdev-logo {
   width: 12rem;
+  padding: 1rem;
 }
 .home h1 {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
   text-align: center;
   padding: 2rem;
-  margin-top: 3rem;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+  margin-top: auto;
+  margin-bottom: 0;
+  width: 100%;
   font-weight: 500;
   color: white;
 }
 @media only screen and (max-width: 700px) {
-  .home .logo {
-    width: 10rem;
+  .home .cory-logo {
+    width: 20rem;
   }
 }/*# sourceMappingURL=home.css.map */

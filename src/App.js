@@ -17,10 +17,16 @@ import TsAdmin from "./components/TS_Admin";
 import TsCompactorLog from "./components/TS_Compactor-log";
 // Style Imports
 import "./css/App.css";
+// Animation Imports
+import { motion as m } from 'framer-motion';
 
 export default function App() {
   return (
-    <div className="App">
+    <m.div className="App"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.25, ease: "easeOut" }}
+    >
       <Router>
         <MobileNavigation />
         <Routes>
@@ -40,6 +46,6 @@ export default function App() {
           <Route path="*" element={<h2>Page not found</h2>}></Route>
         </Routes>
       </Router>
-    </div>
+    </m.div>
   );
 }

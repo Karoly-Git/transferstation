@@ -4,7 +4,8 @@
     align-items: center;
     width: 100%;
     max-width: 500px;
-    margin: 3rem auto 0;
+    margin: 0 auto;
+    padding: 3rem 1rem;
 
 
     h1 {
@@ -12,7 +13,7 @@
         text-align: center;
         color: white;
         background-color: rgba(0, 0, 0, 0.5);
-        padding: 2rem 0;
+        padding: 1rem;
         text-transform: uppercase;
         font-size: 1.75rem;
         font-weight: 500;
@@ -213,7 +214,7 @@
 
         #display {
             padding: 1rem 1rem 0.25rem;
-            background-color: rgba(70, 180, 180, 0.7);
+            background-color: rgba(70, 180, 180, 0.15);
             color: white;
             width: 100%;
             margin-bottom: 1rem;

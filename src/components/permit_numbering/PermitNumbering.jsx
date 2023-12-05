@@ -92,7 +92,11 @@ export default function PermitNumbering() {
     }
 
     return (
-        <div className="permit-numbering">
+        <m.div className="permit-numbering"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+        >
 
             <h1>Permit numbering</h1>
 
@@ -174,7 +178,7 @@ export default function PermitNumbering() {
                         <h3>Verify it's you</h3>
                         <div id="user-box">
                             <div>
-                                <span>User:</span>
+                                <span>Name:</span>
                                 <select
                                     ref={userSelectRef}
                                     value={selectedUserValue}
@@ -264,6 +268,6 @@ export default function PermitNumbering() {
                     </m.div>}
             </div>
 
-        </div>
+        </m.div>
     );
 }

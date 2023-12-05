@@ -1,16 +1,25 @@
 // React Imports
 import React from 'react'
 // Image Imports
-//import logo from "../img/cory-logo-new.svg"
-import logo from "../img/webdev-logo.png"
+import coryLogo from "../img/cory-logo-new.png"
+import webdevLogo from "../img/webdev-logo.png"
+// Animation Imports
+import { motion as m } from 'framer-motion';
 
 export default function Home() {
     return (
-        <div className='home'>
+        <m.div className='home'
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+        >
             <img
-                className='logo'
-                src={logo} alt="logo" />
-            <h1>Innovative Web App Solutions for Production Facilities</h1>
-        </div>
+                className='logo cory-logo'
+                src={coryLogo} alt="Cory logo" />
+            <img
+                className='logo webdev-logo'
+                src={webdevLogo} alt="Webdev logo" />
+            <h1>Web App Solutions</h1>
+        </m.div>
     )
 }

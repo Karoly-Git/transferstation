@@ -53,6 +53,16 @@
 .head-container .hamburger-box-open .icon:first-child {
   margin-top: 0;
 }
+.head-container a {
+  color: white;
+  position: absolute;
+  right: 2rem;
+  top: 1.25rem;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
 
 .menu {
   transition: margin-top, 350ms ease-in-out;

@@ -57,6 +57,7 @@ export default function MobileNavigation() {
                     <CloseIcon className='icon' />
                     <HamburgerIcon className='icon' />
                 </div>
+                <Link to={'/'}>Home</Link>
             </div>
 
             <ul className='menu'>

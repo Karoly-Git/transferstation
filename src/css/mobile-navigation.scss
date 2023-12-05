@@ -64,6 +64,18 @@
             margin-top: 0;
         }
     }
+
+    a {
+        color: white;
+        position: absolute;
+        right: 2rem;
+        top: 1.25rem;
+        //height: 4rem;
+        font-size: 1.25rem;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+    }
 }
 
 .menu {
