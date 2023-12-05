@@ -31,13 +31,12 @@ export default function App() {
         <MobileNavigation />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/transferstation" element={<Home />} />
+          <Route path="/permit-numbering" element={<PermitNumbering />} />
 
           <Route path="/mrf/logs/crane" element={<MrfCrane />} />
           <Route path="/mrf/logs/baler" element={<MrfBaler />} />
           <Route path="/mrf/logs/dressing" element={<MrfDressing />} />
-          <Route path="/mrf/logs/collection-tracker" element={<MrfCollections />} />
-          <Route path="/mrf/permit-numbering" element={<PermitNumbering />} />
+          <Route path="/mrf/logs/collections" element={<MrfCollections />} />
           <Route path="/mrf/admin" element={<MrfAdmin />} />
 
           <Route path="/ts/logs/compactor-log" element={<TsCompactorLog />} />

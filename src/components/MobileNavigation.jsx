@@ -122,7 +122,7 @@ export default function MobileNavigation() {
                                 </li>
                                 <li>
                                     <Link
-                                        to={'/mrf/logs/collection-tracker'}
+                                        to={'/mrf/logs/collections'}
                                         onClick={setMeActie}
                                     >
                                         <TruckIcon className='icon' /> Collection tracker
@@ -140,7 +140,7 @@ export default function MobileNavigation() {
                         </li>}
                         <li>
                             <Link
-                                to={'/mrf/permit-numbering'}
+                                to={'/permit-numbering'}
                                 onClick={setMeActie}
                             >
                                 <AdminIcon className='icon' /> Permit numbering

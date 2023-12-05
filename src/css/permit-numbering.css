@@ -89,7 +89,7 @@
 .permit-numbering #frame .step1 #filter-box input {
   padding: 0 1rem 0 0.5rem;
   height: 100%;
-  font-size: 1.25rem;
+  font-size: 1rem;
   border: none;
   outline: none;
   width: 100%;
@@ -101,7 +101,7 @@
   background-color: white;
   cursor: text;
 }
-.permit-numbering #frame #contractor-option-box {
+.permit-numbering #frame .step1 #contractor-option-box {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
@@ -110,59 +110,59 @@
   overflow-x: hidden !important;
   width: 100%;
 }
-.permit-numbering #frame #contractor-option-box .contractor {
+.permit-numbering #frame .step1 #contractor-option-box .contractor {
   background-color: lightgray;
   padding: 0.75rem 1rem;
   font-size: 1.25rem;
   cursor: pointer;
   transition: all 150ms ease-in-out;
 }
-.permit-numbering #frame #contractor-option-box .contractor:not(:last-child) {
+.permit-numbering #frame .step1 #contractor-option-box .contractor:not(:last-child) {
   margin-bottom: 1rem;
 }
-.permit-numbering #frame #contractor-option-box .contractor:hover {
+.permit-numbering #frame .step1 #contractor-option-box .contractor:hover {
   background-color: darkred !important;
   color: white !important;
 }
-.permit-numbering #frame #contractor-option-box::-webkit-scrollbar {
+.permit-numbering #frame .step1 #contractor-option-box::-webkit-scrollbar {
   width: 12px;
 }
-.permit-numbering #frame #contractor-option-box::-webkit-scrollbar-thumb {
+.permit-numbering #frame .step1 #contractor-option-box::-webkit-scrollbar-thumb {
   background-color: rgb(70, 130, 180);
   border-radius: 6px;
 }
-.permit-numbering #frame #contractor-option-box::-webkit-scrollbar-track {
+.permit-numbering #frame .step1 #contractor-option-box::-webkit-scrollbar-track {
   background-color: darkslategray;
 }
-.permit-numbering #frame #contractor-option-box::-webkit-scrollbar-thumb:hover {
+.permit-numbering #frame .step1 #contractor-option-box::-webkit-scrollbar-thumb:hover {
   background-color: yellowgreen;
 }
-.permit-numbering #frame #contractor-option-box::-webkit-scrollbar-corner {
+.permit-numbering #frame .step1 #contractor-option-box::-webkit-scrollbar-corner {
   background-color: transparent;
 }
-.permit-numbering #frame #user-box {
+.permit-numbering #frame .step2 #user-box {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
   width: 100%;
 }
-.permit-numbering #frame #user-box > div {
+.permit-numbering #frame .step2 #user-box > div {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.permit-numbering #frame #user-box > div:not(:last-child) {
+.permit-numbering #frame .step2 #user-box > div:not(:last-child) {
   margin-bottom: 2rem;
 }
-.permit-numbering #frame #user-box > div span {
+.permit-numbering #frame .step2 #user-box > div span {
   display: block;
   color: white;
   width: 5.5rem;
   font-size: 1.25rem;
   font-weight: 600;
 }
-.permit-numbering #frame #user-box > div select,
-.permit-numbering #frame #user-box > div input {
+.permit-numbering #frame .step2 #user-box > div select,
+.permit-numbering #frame .step2 #user-box > div input {
   height: 3rem;
   border: none;
   outline: none;
@@ -170,13 +170,17 @@
   padding: 0.5rem 1rem;
   width: 60%;
 }
-.permit-numbering #frame #user-box > div select {
+.permit-numbering #frame .step2 #user-box > div select {
+  font-size: 1rem;
   /*-webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;*/
   cursor: pointer;
 }
-.permit-numbering #frame #display {
+.permit-numbering #frame .step2 #user-box > div select option {
+  font-size: 1.25rem;
+}
+.permit-numbering #frame .step3 #display {
   padding: 1rem 1rem 0.25rem;
   background-color: rgba(70, 180, 180, 0.15);
   color: white;
@@ -185,10 +189,10 @@
   font-size: 1.25rem;
   border: 1px solid rgba(255, 255, 255, 0.5);
 }
-.permit-numbering #frame #display div {
+.permit-numbering #frame .step3 #display div {
   margin-bottom: 0.25rem;
 }
-.permit-numbering #frame #display span {
+.permit-numbering #frame .step3 #display span {
   display: inline-block;
   width: 10rem;
 }/*# sourceMappingURL=permit-numbering.css.map */

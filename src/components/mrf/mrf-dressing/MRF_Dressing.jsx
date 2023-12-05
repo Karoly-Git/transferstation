@@ -126,161 +126,164 @@ export default function MrfDressing() {
 
 
     return (
-        <div className="page mrf-dressing">
-            <h2
-                onClick={() => {
-                    console.log(data);
-                }}
-            >
-                console.log(data)
-            </h2>
-            <h2
-                onClick={() => {
-                    submitData(data);
-                }}
-            >
-                SUBMIT
-            </h2>
-
-            <form >
-                <select
-                    onChange={(e) => {
-                        handleOptionChange(e.target.value);
-                        setIsPinMatches(false);
-                        console.log({ isPinMatches: false })
-                        setInputValue("");
+        <>
+            <div className="page">MRF_Dressing</div>
+            {false && <div className="page mrf-dressing">
+                <h2
+                    onClick={() => {
+                        console.log(data);
                     }}
                 >
-                    {data.map((element, index) => (
-                        <option key={index}>{element.name}</option>
-                    ))}
-                </select>
+                    console.log(data)
+                </h2>
+                <h2
+                    onClick={() => {
+                        submitData(data);
+                    }}
+                >
+                    SUBMIT
+                </h2>
 
-                <input
-                    placeholder="PIN"
-                    onInput={(e) => {
-                        setInputValue(e.target.value);
-                        setCurrentPin(e.target.value);
-                        if (e.target.value.length >= 3) {
-                            let pinFromDB = data.filter((item) => item.name === currentName)[0].pin;
-                            if (e.target.value === pinFromDB) {
-                                setIsPinMatches(true);
-                                console.log('MATCHES');
+                <form >
+                    <select
+                        onChange={(e) => {
+                            handleOptionChange(e.target.value);
+                            setIsPinMatches(false);
+                            console.log({ isPinMatches: false })
+                            setInputValue("");
+                        }}
+                    >
+                        {data.map((element, index) => (
+                            <option key={index}>{element.name}</option>
+                        ))}
+                    </select>
+
+                    <input
+                        placeholder="PIN"
+                        onInput={(e) => {
+                            setInputValue(e.target.value);
+                            setCurrentPin(e.target.value);
+                            if (e.target.value.length >= 3) {
+                                let pinFromDB = data.filter((item) => item.name === currentName)[0].pin;
+                                if (e.target.value === pinFromDB) {
+                                    setIsPinMatches(true);
+                                    console.log('MATCHES');
+                                } else {
+                                    setIsPinMatches(false);
+                                    console.log('NO matches');
+                                }
                             } else {
                                 setIsPinMatches(false);
                                 console.log('NO matches');
                             }
-                        } else {
-                            setIsPinMatches(false);
-                            console.log('NO matches');
-                        }
-                    }}
-                    type="password"
-                    name=""
-                    pin=""
-                    maxLength="3"
-                    value={inputValue}
-                />
-
-                <DressedInput
-                    onChange={(e) => {
-                        setOCC(e.target.value);
-                    }}
-                    material="OCC:"
-                    status={currentStatus}
-                    value={occ}
-                />
-                <DressedInput
-                    onChange={(e) => {
-                        setNip(e.target.value);
-                    }}
-                    material="NiP:"
-                    status={currentStatus}
-                    value={nip}
-                />
-                <DressedInput
-                    onChange={(e) => {
-                        setMixedPaper(e.target.value);
-                    }}
-                    material="Mixed paper:"
-                    status={currentStatus}
-                    value={mixedPaper}
-                />
-
-                {currentStatus === "absence" && (
-                    <Button
-                        btnClass="start-btn"
-                        text="START"
-                        handleClick={() => {
-                            if (isPinMatches) {
-                                data.filter(element => element.name === currentName)[0].status = 'dressing'; // DB changes!
-                                let index = data.filter(element => element.name === currentName)[0].dressing.length;
-                                data.filter(element => element.name === currentName)[0].dressing.push(JSON.parse(JSON.stringify(newDressingSession))); // DB changes!
-                                data.filter(element => element.name === currentName)[0].dressing[index].id = index + 1; // DB changes!
-                                data.filter(element => element.name === currentName)[0].dressing[index].start = new Date(); // DB changes!
-                                setCurrentStatus('dressing');
-                                setInputValue("");
-                                setIsPinMatches(false);
-                            } else {
-                                window.alert("Wrong PIN");
-                            }
                         }}
+                        type="password"
+                        name=""
+                        pin=""
+                        maxLength="3"
+                        value={inputValue}
                     />
-                )}
 
-                {currentStatus === "dressing" && (
-                    <Button
-                        btnClass="stop-btn"
-                        text="STOP"
-                        handleClick={() => {
-                            if (isPinMatches) {
-                                data.filter(element => element.name === currentName)[0].status = 'finished'; // DB changes!
-                                let index = data.filter(element => element.name === currentName)[0].dressing.length;
-                                data.filter(element => element.name === currentName)[0].dressing[index - 1].finish = new Date(); // DB changes!
-                                setCurrentStatus('finished');
-                                setInputValue("");
-                                setIsPinMatches(false);
-                            } else {
-                                window.alert("Wrong PIN");
-                            }
+                    <DressedInput
+                        onChange={(e) => {
+                            setOCC(e.target.value);
                         }}
+                        material="OCC:"
+                        status={currentStatus}
+                        value={occ}
                     />
-                )}
-
-                {currentStatus === "finished" && (
-                    <Button
-                        btnClass="save-btn"
-                        text="SAVE"
-                        handleClick={() => {
-                            if (isPinMatches) {
-                                data.filter(element => element.name === currentName)[0].status = 'absence'; // DB changes!
-                                let index = data.filter(element => element.name === currentName)[0].dressing.length;
-                                data.filter(element => element.name === currentName)[0].dressing[index - 1].materials.occ = occ; // DB changes!
-                                data.filter(element => element.name === currentName)[0].dressing[index - 1].materials.nip = nip; // DB changes!
-                                data.filter(element => element.name === currentName)[0].dressing[index - 1].materials.mixedPaper = mixedPaper; // DB changes!
-                                setCurrentStatus('absence');
-                                setInputValue("");
-                                setIsPinMatches(false);
-                                setOCC("");
-                                setNip("");
-                                setMixedPaper("");
-                            } else {
-                                window.alert("Wrong PIN");
-                            }
+                    <DressedInput
+                        onChange={(e) => {
+                            setNip(e.target.value);
                         }}
+                        material="NiP:"
+                        status={currentStatus}
+                        value={nip}
                     />
-                )}
+                    <DressedInput
+                        onChange={(e) => {
+                            setMixedPaper(e.target.value);
+                        }}
+                        material="Mixed paper:"
+                        status={currentStatus}
+                        value={mixedPaper}
+                    />
+
+                    {currentStatus === "absence" && (
+                        <Button
+                            btnClass="start-btn"
+                            text="START"
+                            handleClick={() => {
+                                if (isPinMatches) {
+                                    data.filter(element => element.name === currentName)[0].status = 'dressing'; // DB changes!
+                                    let index = data.filter(element => element.name === currentName)[0].dressing.length;
+                                    data.filter(element => element.name === currentName)[0].dressing.push(JSON.parse(JSON.stringify(newDressingSession))); // DB changes!
+                                    data.filter(element => element.name === currentName)[0].dressing[index].id = index + 1; // DB changes!
+                                    data.filter(element => element.name === currentName)[0].dressing[index].start = new Date(); // DB changes!
+                                    setCurrentStatus('dressing');
+                                    setInputValue("");
+                                    setIsPinMatches(false);
+                                } else {
+                                    window.alert("Wrong PIN");
+                                }
+                            }}
+                        />
+                    )}
+
+                    {currentStatus === "dressing" && (
+                        <Button
+                            btnClass="stop-btn"
+                            text="STOP"
+                            handleClick={() => {
+                                if (isPinMatches) {
+                                    data.filter(element => element.name === currentName)[0].status = 'finished'; // DB changes!
+                                    let index = data.filter(element => element.name === currentName)[0].dressing.length;
+                                    data.filter(element => element.name === currentName)[0].dressing[index - 1].finish = new Date(); // DB changes!
+                                    setCurrentStatus('finished');
+                                    setInputValue("");
+                                    setIsPinMatches(false);
+                                } else {
+                                    window.alert("Wrong PIN");
+                                }
+                            }}
+                        />
+                    )}
+
+                    {currentStatus === "finished" && (
+                        <Button
+                            btnClass="save-btn"
+                            text="SAVE"
+                            handleClick={() => {
+                                if (isPinMatches) {
+                                    data.filter(element => element.name === currentName)[0].status = 'absence'; // DB changes!
+                                    let index = data.filter(element => element.name === currentName)[0].dressing.length;
+                                    data.filter(element => element.name === currentName)[0].dressing[index - 1].materials.occ = occ; // DB changes!
+                                    data.filter(element => element.name === currentName)[0].dressing[index - 1].materials.nip = nip; // DB changes!
+                                    data.filter(element => element.name === currentName)[0].dressing[index - 1].materials.mixedPaper = mixedPaper; // DB changes!
+                                    setCurrentStatus('absence');
+                                    setInputValue("");
+                                    setIsPinMatches(false);
+                                    setOCC("");
+                                    setNip("");
+                                    setMixedPaper("");
+                                } else {
+                                    window.alert("Wrong PIN");
+                                }
+                            }}
+                        />
+                    )}
 
 
-                <h2 style={{ cursor: 'pointer' }}
-                    onClick={() => {
-                        resetDatabase();
-                    }}
-                >
-                    RESET
-                </h2>
+                    <h2 style={{ cursor: 'pointer' }}
+                        onClick={() => {
+                            resetDatabase();
+                        }}
+                    >
+                        RESET
+                    </h2>
 
-            </form>
-        </div>
+                </form>
+            </div>}
+        </>
     )
 }
