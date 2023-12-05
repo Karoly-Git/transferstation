@@ -6,9 +6,9 @@ import { IoIosArrowDown as ArrowIcon } from "react-icons/io";
 // Style Imports
 import "../../css/permit-numbering.css";
 // Data Imports
-import { contractors } from "../../data/contractors";
-import { users } from "../../data/users";
-import { permits } from "../../data/permits";
+import { contractors } from "./data/contractors";
+import { users } from "./data/users";
+import { permits } from "./data/permits";
 import NavButton from "./NavButton";
 // Animation Imports
 import { motion as m } from 'framer-motion';
@@ -92,7 +92,7 @@ export default function PermitNumbering() {
     }
 
     return (
-        <m.div className="permit-numbering"
+        <m.div className="page permit-numbering"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.25, ease: "easeOut" }}

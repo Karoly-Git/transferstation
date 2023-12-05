@@ -1,4 +1,4 @@
-.dressing {
+.mrf-dressing {
   display: flex;
   flex-direction: column;
   width: 80vw;
@@ -11,22 +11,22 @@
   margin: auto;
   margin-top: 2rem;
 }
-.dressing * {
+.mrf-dressing * {
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
 }
-.dressing h2 {
+.mrf-dressing h2 {
   color: white;
 }
-.dressing .status {
+.mrf-dressing .status {
   width: 100%;
   padding: 0.5rem 0 0;
   font-family: sans-serif;
   text-transform: uppercase;
 }
-.dressing form {
+.mrf-dressing form {
   width: 100%;
   height: 100%;
   display: flex;
@@ -34,7 +34,7 @@
   justify-content: space-between;
   align-items: center;
 }
-.dressing select {
+.mrf-dressing select {
   margin-top: 2rem;
   padding: 1rem;
   font-size: 2rem;
@@ -43,10 +43,10 @@
   border-right: 1rem solid transparent;
   outline: 3px solid darkgreen;
 }
-.dressing option {
+.mrf-dressing option {
   color: gray;
 }
-.dressing input {
+.mrf-dressing input {
   margin-top: 1rem;
   margin-bottom: auto;
   align-self: flex-start;
@@ -57,7 +57,7 @@
   border: 2px solid darkgreen;
   font-weight: 600;
 }
-.dressing .dressed {
+.mrf-dressing .dressed {
   margin-top: 0;
   margin-bottom: 0.5rem;
   display: flex;
@@ -69,25 +69,25 @@
   transition: all 200ms ease;
   opacity: 1;
 }
-.dressing .dressed:nth-child(4) {
+.mrf-dressing .dressed:nth-child(4) {
   transition-delay: 150ms;
 }
-.dressing .dressed:nth-child(5) {
+.mrf-dressing .dressed:nth-child(5) {
   transition-delay: 300ms;
 }
-.dressing .dressed h3 {
+.mrf-dressing .dressed h3 {
   font-family: sans-serif;
   font-weight: 100;
   color: wheat;
 }
-.dressing .dressed input {
+.mrf-dressing .dressed input {
   margin-top: 0;
   margin-right: 5rem;
 }
-.dressing .last {
+.mrf-dressing .last {
   margin-bottom: 2.5rem;
 }
-.dressing .btn {
+.mrf-dressing .btn {
   font-family: sans-serif;
   text-align: center;
   font-size: 2.5rem;
@@ -99,16 +99,16 @@
   color: white;
   border: none;
 }
-.dressing .hidden {
+.mrf-dressing .hidden {
   left: -100px;
   opacity: 0;
 }
-.dressing .start-btn {
+.mrf-dressing .start-btn {
   background-color: darkgreen;
 }
-.dressing .stop-btn {
+.mrf-dressing .stop-btn {
   background-color: darkred;
 }
-.dressing .save-btn {
+.mrf-dressing .save-btn {
   background-color: darkblue;
 }/*# sourceMappingURL=mrf-dressing.css.map */

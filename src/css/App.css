@@ -1,7 +1,3 @@
-@import './mobile-navigation.css';
-@import './home.css';
-@import './mrf-dressing.css';
-@import './mrf-admin.css';
 * {
   margin: 0;
   padding: 0;
@@ -14,11 +10,545 @@
 }
 
 .App {
-  min-height: 100vh;
+  height: 100vh;
   padding-bottom: 3rem;
   background-color: black;
   background-color: transparent;
   background-image: url("../img/bg .jpg");
   background-size: cover;
   background-position: center;
+}
+
+.mobile-navigation {
+  background-color: rgb(1, 50, 74);
+  display: flex;
+  flex-direction: column;
+  height: 4rem;
+  width: 100%;
+}
+.mobile-navigation a:hover {
+  text-decoration: underline !important;
+  text-underline-offset: 4px;
+}
+.mobile-navigation li {
+  transition: margin-top, 350ms ease-in-out;
+}
+.mobile-navigation .icon {
+  transition: all 350ms ease-in-out;
+  color: white;
+}
+.mobile-navigation .sub1-title,
+.mobile-navigation .sub2-title {
+  cursor: pointer;
+}
+
+.head-container {
+  width: 100%;
+  min-height: 100%;
+  background-color: rgb(1, 50, 74);
+  position: relative;
+  z-index: 1000;
+}
+.head-container .hamburger-box {
+  display: flex;
+  flex-direction: column;
+  width: 2rem;
+  height: 2rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  overflow: hidden;
+}
+.head-container .hamburger-box .icon {
+  min-height: 2rem;
+  min-width: 2rem;
+  transform: rotate(0deg);
+  transition: margin-top, 350ms ease-in-out;
+  cursor: pointer;
+}
+.head-container .hamburger-box .icon:first-child {
+  margin-top: -2rem;
+}
+.head-container .hamburger-box-open .icon {
+  transform: rotate(90deg);
+}
+.head-container .hamburger-box-open .icon:first-child {
+  margin-top: 0;
+}
+.head-container a {
+  color: white;
+  position: absolute;
+  right: 2rem;
+  top: 1.25rem;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.menu {
+  transition: margin-top, 350ms ease-in-out;
+  max-width: 340px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  position: relative;
+  z-index: 900;
+}
+.menu .mrf-logs-list,
+.menu .ts-logs-list {
+  background-color: rgb(0, 99, 148);
+}
+.menu .mrf,
+.menu .ts {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin-top: -1px;
+}
+.menu .mrf .sub1-title,
+.menu .ts .sub1-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(1, 50, 74);
+  height: 50px;
+  border-top: 1px solid rgb(78, 112, 129);
+  border-bottom: 1px solid rgb(78, 112, 129);
+}
+.menu .mrf .sub1-title div,
+.menu .mrf .sub1-title h2,
+.menu .ts .sub1-title div,
+.menu .ts .sub1-title h2 {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+.menu .mrf .sub1-title h2,
+.menu .ts .sub1-title h2 {
+  width: 100%;
+  padding-left: 1rem;
+  font-weight: 500;
+  color: white;
+}
+.menu .mrf .sub1-title div,
+.menu .ts .sub1-title div {
+  min-width: 50px;
+}
+.menu .mrf .sub1-title .icon-box,
+.menu .ts .sub1-title .icon-box {
+  justify-content: center;
+  width: 50px;
+  font-size: 1.1rem;
+  border-left: 1px solid rgb(78, 112, 129);
+}
+.menu .mrf .sub1-title .icon-box .icon,
+.menu .ts .sub1-title .icon-box .icon {
+  min-width: 1.5rem;
+  height: 1.5rem;
+}
+.menu .mrf .sub1-menu,
+.menu .ts .sub1-menu {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  background-color: rgb(0, 73, 110);
+  transition: margin-top, 350ms ease-in-out;
+  overflow: hidden;
+}
+.menu .mrf .sub1-menu li,
+.menu .ts .sub1-menu li {
+  display: flex;
+  align-items: center;
+  margin-left: 2rem;
+  min-height: 50px;
+}
+.menu .mrf .sub1-menu li a,
+.menu .ts .sub1-menu li a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 1.1rem;
+  color: white;
+}
+.menu .mrf .sub1-menu li .icon,
+.menu .ts .sub1-menu li .icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-right: 1rem;
+}
+.menu .mrf .sub1-menu li:not(li:first-child),
+.menu .ts .sub1-menu li:not(li:first-child) {
+  border-top: 1px solid white;
+}
+.menu .mrf .sub1-menu .has-sub,
+.menu .ts .sub1-menu .has-sub {
+  flex-direction: column;
+}
+.menu .mrf .sub1-menu .has-sub .sub2-title,
+.menu .ts .sub1-menu .has-sub .sub2-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(100% - 0px);
+  border-bottom: 1px solid white;
+  margin-bottom: -1px;
+}
+.menu .mrf .sub1-menu .has-sub .sub2-title h3,
+.menu .ts .sub1-menu .has-sub .sub2-title h3 {
+  color: white;
+  font-weight: 500;
+}
+.menu .mrf .sub1-menu .has-sub .sub2-title .icon:not(h3 .icon),
+.menu .ts .sub1-menu .has-sub .sub2-title .icon:not(h3 .icon) {
+  margin: 0;
+  width: 50px;
+  height: 50px;
+  padding: 15px;
+}
+.menu .mrf .sub1-menu .has-sub .sub2-menu,
+.menu .ts .sub1-menu .has-sub .sub2-menu {
+  width: 100%;
+  overflow: hidden;
+}
+.menu .mrf .sub1-menu .has-sub .sub2-menu li,
+.menu .ts .sub1-menu .has-sub .sub2-menu li {
+  margin-left: 3rem;
+}
+
+.home {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+.home .cory-logo {
+  margin-top: 3rem;
+  width: 30rem;
+}
+.home .webdev-logo {
+  width: 12rem;
+  padding: 1rem;
+}
+.home h1 {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+  text-align: center;
+  padding: 2rem;
+  margin-top: auto;
+  margin-bottom: 0;
+  width: 100%;
+  font-weight: 500;
+  color: white;
+}
+@media only screen and (max-width: 700px) {
+  .home .cory-logo {
+    width: 20rem;
+  }
+}
+
+.dressing {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  height: 80vh;
+  max-width: 350px;
+  max-height: 600px;
+  padding: 1rem;
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
+  margin: auto;
+  margin-top: 2rem;
+}
+.dressing * {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.dressing h2 {
+  color: white;
+}
+.dressing .status {
+  width: 100%;
+  padding: 0.5rem 0 0;
+  font-family: sans-serif;
+  text-transform: uppercase;
+}
+.dressing form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.dressing select {
+  margin-top: 2rem;
+  padding: 1rem;
+  font-size: 2rem;
+  width: 100%;
+  border: none;
+  border-right: 1rem solid transparent;
+  outline: 3px solid darkgreen;
+}
+.dressing option {
+  color: gray;
+}
+.dressing input {
+  margin-top: 1rem;
+  margin-bottom: auto;
+  align-self: flex-start;
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: 25%;
+  letter-spacing: 3px;
+  border: 2px solid darkgreen;
+  font-weight: 600;
+}
+.dressing .dressed {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  left: 0;
+  transition: all 200ms ease;
+  opacity: 1;
+}
+.dressing .dressed:nth-child(4) {
+  transition-delay: 150ms;
+}
+.dressing .dressed:nth-child(5) {
+  transition-delay: 300ms;
+}
+.dressing .dressed h3 {
+  font-family: sans-serif;
+  font-weight: 100;
+  color: wheat;
+}
+.dressing .dressed input {
+  margin-top: 0;
+  margin-right: 5rem;
+}
+.dressing .last {
+  margin-bottom: 2.5rem;
+}
+.dressing .btn {
+  font-family: sans-serif;
+  text-align: center;
+  font-size: 2.5rem;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  width: 80%;
+  margin-bottom: 5rem;
+  background-color: white;
+  color: white;
+  border: none;
+}
+.dressing .hidden {
+  left: -100px;
+  opacity: 0;
+}
+.dressing .start-btn {
+  background-color: darkgreen;
+}
+.dressing .stop-btn {
+  background-color: darkred;
+}
+.dressing .save-btn {
+  background-color: darkblue;
+}
+
+.mrf-admin {
+  font-family: sans-serif;
+}
+.mrf-admin label {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  margin: 0.25rem;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+  transition: color 150ms ease-in-out;
+}
+.mrf-admin label input {
+  margin-left: 0.75rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  cursor: pointer;
+}
+.mrf-admin label:hover {
+  color: black;
+}
+.mrf-admin .head-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  background-color: black;
+  color: white;
+  width: 100%;
+  min-height: 60px;
+}
+.mrf-admin .head-box .icon {
+  font-size: 2rem;
+}
+.mrf-admin .head-box .add-user-icon {
+  cursor: pointer;
+}
+.mrf-admin .register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem;
+  width: 550px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: red;
+  transition: height 500ms ease-in-out;
+  height: 60px;
+  overflow: hidden;
+}
+.mrf-admin .register form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 350px;
+  padding: 2rem;
+  height: 340px;
+}
+.mrf-admin .register form input {
+  padding: 0.5rem;
+  font-size: 1.5rem;
+}
+.mrf-admin .register form button {
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  border: 3px solid white;
+}
+.mrf-admin .register .worker {
+  color: white;
+}
+.mrf-admin .register .worker * {
+  font-weight: 100;
+}
+.mrf-admin .register .worker .inactive {
+  color: red;
+}
+.mrf-admin .register .hidden-inactive {
+  display: none;
+}
+.mrf-admin .register-open {
+  height: 400px;
+}
+.mrf-admin .filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem;
+  width: 550px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: red;
+}
+.mrf-admin .filter div {
+  display: flex;
+}
+.mrf-admin .filter .filter-box {
+  width: 100%;
+}
+.mrf-admin .filter .filter-box label {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 4rem;
+}
+.mrf-admin .filter .is-active {
+  background-color: transparent;
+}
+.mrf-admin .filter .is-at-work {
+  background-color: transparent;
+}
+.mrf-admin .filter .activity {
+  background-color: transparent;
+}
+.mrf-admin .filter .middle-container {
+  background-color: green;
+  width: 100%;
+}
+.mrf-admin .filter .middle-container .activity-box {
+  flex-direction: column;
+  align-items: flex-end;
+  background-color: darkred;
+  width: 50%;
+}
+.mrf-admin .filter .middle-container .activity-box label {
+  padding-right: 4rem;
+  text-transform: capitalize;
+}
+.mrf-admin .filter .middle-container .right-box {
+  flex-direction: column;
+  width: 50%;
+}
+.mrf-admin .filter .middle-container .right-box .materials {
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+  background-color: brown;
+}
+.mrf-admin .filter .middle-container .right-box .materials label {
+  padding-right: 4rem;
+}
+.mrf-admin .filter .middle-container .right-box .shift-box {
+  justify-content: flex-end;
+  width: 100%;
+}
+.mrf-admin .filter .middle-container .right-box .shift-box label:nth-child(2) {
+  padding-right: 4rem;
+}
+.mrf-admin .filter .dates {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.mrf-admin .filter .dates input {
+  width: 50%;
+  padding: 0.5rem;
+  padding-right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.mrf-admin .filter .times {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.mrf-admin .filter .times input {
+  width: 50%;
+  padding: 0.5rem;
+  padding-right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.mrf-admin .filter .data-box {
+  flex-direction: column;
+  color: white;
+}
+.mrf-admin .filter .data-box * {
+  font-weight: 100;
+}
+@media only screen and (max-width: 650px) {
+  .mrf-admin .register,
+.mrf-admin .filter {
+    width: 85%;
+  }
 }/*# sourceMappingURL=app.css.map */

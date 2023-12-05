@@ -1,6 +1,7 @@
+// React Imports
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-
+// Icon Imports
 import { RxHamburgerMenu as HamburgerIcon } from 'react-icons/rx';
 import { CgClose as CloseIcon } from 'react-icons/cg';
 import { AiOutlinePlus as PlusIcon } from 'react-icons/ai';

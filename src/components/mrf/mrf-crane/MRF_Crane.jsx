@@ -1,7 +1,8 @@
+// React Imports
 import React from 'react'
 
 export default function MRF_Crane() {
     return (
-        <div>MRF_Crane</div>
+        <div className='page mrf-crane'>MRF_Crane</div>
     )
 }

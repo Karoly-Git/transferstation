@@ -7,14 +7,14 @@ import PermitNumbering from "./components/permit_numbering/PermitNumbering";
 // Component Imports
 import MobileNavigation from "./components/MobileNavigation";
 // MRF Sub Pages Imports
-import MrfCrane from "./components/MRF_Crane";
-import MrfBaler from "./components/MRF_Baler";
-import MrfDressing from "./components/MRF_Dressing";
-import MrfCollectionTracker from "./components/MRF_Collection-tracker";
-import MrfAdmin from "./components/MRF_Admin";
+import MrfCrane from "./components/mrf/mrf-crane/MRF_Crane";
+import MrfBaler from "./components/mrf/mrf-baler/MRF_Baler";
+import MrfDressing from "./components/mrf/mrf-dressing/MRF_Dressing";
+import MrfCollections from "./components/mrf/mrf-collections/MRF_Collections";
+import MrfAdmin from "./components/mrf/mrf-admin/MRF_Admin";
 // TS Sub Pages Imports
-import TsAdmin from "./components/TS_Admin";
-import TsCompactorLog from "./components/TS_Compactor-log";
+import TsAdmin from "./components/ts/ts-admin/TS_Admin";
+import TsCompactorLog from "./components/ts/ts-compactors/TS_Compactors";
 // Style Imports
 import "./css/App.css";
 // Animation Imports
@@ -36,7 +36,7 @@ export default function App() {
           <Route path="/mrf/logs/crane" element={<MrfCrane />} />
           <Route path="/mrf/logs/baler" element={<MrfBaler />} />
           <Route path="/mrf/logs/dressing" element={<MrfDressing />} />
-          <Route path="/mrf/logs/collection-tracker" element={<MrfCollectionTracker />} />
+          <Route path="/mrf/logs/collection-tracker" element={<MrfCollections />} />
           <Route path="/mrf/permit-numbering" element={<PermitNumbering />} />
           <Route path="/mrf/admin" element={<MrfAdmin />} />
 

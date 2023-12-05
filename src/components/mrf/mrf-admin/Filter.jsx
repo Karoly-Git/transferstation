@@ -1,6 +1,8 @@
+// React Imports
 import React, { useState } from "react";
-import database from '../js/database';
-
+// Data Imports
+import database from '../../../js/database';
+// Icon Imports
 import { BiFilterAlt as FilterIcon } from 'react-icons/bi';
 
 export default function Filter() {

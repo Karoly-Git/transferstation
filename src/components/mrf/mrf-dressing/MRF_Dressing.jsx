@@ -1,8 +1,12 @@
+// React Imports
 import React, { useState, useEffect } from "react";
-import { dressingSchema as newDressingSession } from "../js/schemas";
+// Schema Imports
+import { dressingSchema as newDressingSession } from "../../../js/schemas";
+// Data Imports
+import { url } from "../../../js/config";
+// Component Imports
 import DressedInput from "./Dressed_input";
 import Button from "./Button";
-import { url } from "../js/config"
 
 export default function MrfDressing() {
 
@@ -122,7 +126,7 @@ export default function MrfDressing() {
 
 
     return (
-        <div className="dressing">
+        <div className="page mrf-dressing">
             <h2
                 onClick={() => {
                     console.log(data);

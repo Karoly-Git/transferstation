@@ -1,5 +1,6 @@
+// React Imports
 import React, { useState } from "react";
-
+// Icon Imports
 import { BiUserPlus as AddUserIcon } from 'react-icons/bi';
 import { AiOutlineEdit as EditUserIcon } from 'react-icons/ai';
 
