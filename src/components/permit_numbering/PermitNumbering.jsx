@@ -10,6 +10,8 @@ import { contractors } from "../../data/contractors";
 import { users } from "../../data/users";
 import { permits } from "../../data/permits";
 import NavButton from "./NavButton";
+// Animation Imports
+import { motion as m } from 'framer-motion';
 
 export default function PermitNumbering() {
     // Constants
@@ -55,7 +57,7 @@ export default function PermitNumbering() {
             return contractorName.includes(searchValue);
         });
 
-        setDisplayedContractors((prevContractors) => [...filteredContractors]);
+        setDisplayedContractors((prevContractors) => [...filteredContractors].sort((a, b) => a.name.localeCompare(b.name)));
         setCurrentContractor(""); // This for setting the bg-color back to original
     }
 
@@ -96,7 +98,12 @@ export default function PermitNumbering() {
 
             <div id="frame">
                 {activeSlide === 1 &&
-                    <div className="slide step1">
+                    <m.div
+                        className="slide step1"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.25, ease: "easeOut" }}
+                    >
 
                         <h3>Choose contractor</h3>
 
@@ -115,9 +122,10 @@ export default function PermitNumbering() {
                             />
                         </div>
 
-                        <div id="contractor-option-box"
+                        <div
+                            id="contractor-option-box"
                             className={displayedContractors.length ? "visible-element" : "invisible-element"}
-                            style={displayedContractors.length <= 5 ? { overflow: "hidden" } : {}}>
+                            style={displayedContractors.length <= 3 ? { overflow: "hidden" } : { overflow: "scroll" }}>
                             {displayedContractors.map((contractor, index) => (
                                 <div
                                     key={index}
@@ -132,10 +140,10 @@ export default function PermitNumbering() {
                                         } else {
                                             let filteredContractors = contractors.filter((e) =>
                                                 e.name
-                                                    .toLocaleLowerCase()
-                                                    .includes(searchInputValue.toLocaleLowerCase()),
+                                                    .toLowerCase()
+                                                    .includes(searchInputValue.toLowerCase()),
                                             );
-                                            setDisplayedContractors([...filteredContractors]);
+                                            setDisplayedContractors([...filteredContractors].sort((a, b) => a.name.localeCompare(b.name)));
                                             setCurrentContractor("");
                                         }
                                     }}
@@ -154,32 +162,34 @@ export default function PermitNumbering() {
                         >
                             <NavButton className='btn' text="next" onClick={() => setActiveSlide(2)} />
                         </div>
-                    </div>}
+                    </m.div>}
 
                 {activeSlide === 2 &&
-                    <div className="slide step2">
+                    <m.div
+                        className="slide step2"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.25, ease: "easeOut" }}
+                    >
                         <h3>Verify it's you</h3>
                         <div id="user-box">
                             <div>
-                                <span>Users:</span>
-                                <div className="container">
-                                    <select
-                                        ref={userSelectRef}
-                                        value={selectedUserValue}
-                                        name="users"
-                                        id="users"
-                                        onChange={handleUserOptionChange}
-                                    >
-                                        {users
-                                            .sort((a, b) => a.name.localeCompare(b.name))
-                                            .map((user, index) => (
-                                                <option key={index} value={user.id}>
-                                                    {user.name}
-                                                </option>
-                                            ))}
-                                    </select>
-                                </div>
-                                <ArrowIcon className="icon" />
+                                <span>User:</span>
+                                <select
+                                    ref={userSelectRef}
+                                    value={selectedUserValue}
+                                    name="users"
+                                    id="users"
+                                    onChange={handleUserOptionChange}
+                                >
+                                    {users
+                                        .sort((a, b) => a.name.localeCompare(b.name))
+                                        .map((user, index) => (
+                                            <option key={index} value={user.id}>
+                                                {user.name}
+                                            </option>
+                                        ))}
+                                </select>
                             </div>
                             <div
                                 className={currentUserID === 0 ? "invisible-element" : "visible-element"}>
@@ -209,10 +219,15 @@ export default function PermitNumbering() {
                                 }}
                             />
                         </div>
-                    </div>}
+                    </m.div>}
 
                 {activeSlide === 3 &&
-                    <div className="slide step3">
+                    <m.div
+                        className="slide step3"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.25, ease: "easeOut" }}
+                    >
                         <h3>New permit details</h3>
                         <div id="display">
                             <div>
@@ -238,11 +253,15 @@ export default function PermitNumbering() {
                         </div>
 
                         <div className="btn-box">
-                            <span onClick={resetProcess}>
-                                <NavButton text="reset" />
-                            </span>
+                            <NavButton
+                                className='btn'
+                                text="reset"
+                                onClick={() => {
+                                    resetProcess();
+                                    setActiveSlide(1);
+                                }} />
                         </div>
-                    </div>}
+                    </m.div>}
             </div>
 
         </div>
