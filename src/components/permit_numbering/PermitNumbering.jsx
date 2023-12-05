@@ -5,19 +5,25 @@ import { IoIosSearch as SearchIcon } from "react-icons/io";
 import { IoIosArrowDown as ArrowIcon } from "react-icons/io";
 // Style Imports
 import "../../css/permit-numbering.css";
-// Data Imports
-import { contractors } from "./data/contractors";
-import { users } from "./data/users";
-import { permits } from "./data/permits";
+// Component Imports
 import NavButton from "./NavButton";
 // Animation Imports
 import { motion as m } from 'framer-motion';
+// Form Handling Imports
+import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+
 
 export default function PermitNumbering() {
     // Constants
     const INITIAL_PERMIT_ID = 4;
 
     // State
+    const [contractors, setContractors] = useState([]);
+    const [users, setUsers] = useState([]);
+    const [permits, setPermits] = useState([]);
+
     const [nextPermitID, setNextPermitID] = useState(INITIAL_PERMIT_ID);
     const [workPermits, setWorkPermits] = useState(permits);
     const [newWorkPermits, setNewPermits] = useState({});
@@ -31,6 +37,33 @@ export default function PermitNumbering() {
     const [currentUserID, setCurrentUserID] = useState(0); // resetProcess 5
     const [currentContractor, setCurrentContractor] = useState(""); // resetProcess 6
     const [activeSlide, setActiveSlide] = useState(1);
+
+    const URL = "https://transferstation-ac939f5c93a1.herokuapp.com/";
+
+    useEffect(() => {
+        const fetchData = async (filename, setData) => {
+            try {
+                const response = await fetch(URL + filename)
+
+                if (!response.ok) {
+                    throw new Error("Network response was not ok")
+                }
+
+                const jsonData = await response.json();
+
+                setData(jsonData);
+
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            } /*finally {
+                console.error('Fetching finished.');
+            }*/
+        };
+
+        fetchData('contractors', setContractors);
+        fetchData('users', setUsers);
+        fetchData('permits', setPermits);
+    }, []);
 
     function resetProcess() {
         setSearchInputValue(""); // const 1

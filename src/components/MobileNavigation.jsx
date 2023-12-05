@@ -125,7 +125,7 @@ export default function MobileNavigation() {
                                         to={'/mrf/logs/collections'}
                                         onClick={setMeActie}
                                     >
-                                        <TruckIcon className='icon' /> Collection tracker
+                                        <TruckIcon className='icon' /> Collections
                                     </Link>
                                 </li>
                             </ul>
@@ -187,7 +187,7 @@ export default function MobileNavigation() {
                                         to={'/ts/logs/compactor-log'}
                                         onClick={setMeActie}
                                     >
-                                        <CubeIcon className='icon' /> Compactor log
+                                        <CubeIcon className='icon' /> Compactors
                                     </Link>
                                 </li>
                             </ul>

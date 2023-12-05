@@ -85,7 +85,7 @@ export const contractors = [
     },
     {
         id: 15,
-        name: "Hokay Techs 3 4",
+        name: "Hokey Techs 3 4",
         note: "",
         isActive: true,
     },
