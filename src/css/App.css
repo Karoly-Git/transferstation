@@ -165,9 +165,6 @@
   background-color: darkblue;
 }
 
-.mrf-admin {
-  font-family: sans-serif;
-}
 .mrf-admin label {
   display: flex;
   align-items: center;
@@ -551,4 +548,4 @@
 .menu .mrf .sub1-menu .has-sub .sub2-menu li,
 .menu .ts .sub1-menu .has-sub .sub2-menu li {
   margin-left: 3rem;
-}/*# sourceMappingURL=app.css.map */
+}/*# sourceMappingURL=App.css.map */
