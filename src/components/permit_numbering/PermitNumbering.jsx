@@ -37,7 +37,7 @@ export default function PermitNumbering() {
     const [currentContractor, setCurrentContractor] = useState(""); // resetProcess 6
     const [activeSlide, setActiveSlide] = useState(1);
 
-    const URL = "https://transferstation-ac939f5c93a1.herokuapp.com/";
+    const URL = "https://transferstation-3b985f9b450e.herokuapp.com/";
     //const URL = "http://localhost:8000/";
 
 
