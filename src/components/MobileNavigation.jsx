@@ -50,6 +50,9 @@ export default function MobileNavigation() {
         openCloseMenu();
     };
 
+    const URL = "https://transferstation-0ad985e131fb.herokuapp.com/";
+    //const URL = "http://localhost:8000/";
+
     const handleDownloadRequest = async () => {
         try {
             const response = await fetch(URL + "download-permits-file");

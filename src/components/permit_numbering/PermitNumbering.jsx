@@ -37,8 +37,8 @@ export default function PermitNumbering() {
     const [currentContractor, setCurrentContractor] = useState(""); // resetProcess 6
     const [activeSlide, setActiveSlide] = useState(1);
 
-    const URL = "https://transferstation-0ad985e131fb.herokuapp.com/";
-    //const URL = "http://localhost:8000/";
+    //const URL = "https://transferstation-0ad985e131fb.herokuapp.com/";
+    const URL = "http://localhost:8000/";
 
 
     const sendPermitToBackend = async () => {
@@ -176,7 +176,6 @@ export default function PermitNumbering() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
         >
-
             <h1>Permit numbering</h1>
 
             <div id="frame">
