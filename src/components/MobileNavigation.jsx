@@ -1,6 +1,8 @@
 // React Imports
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+// Config Imports
+import { config } from './permit_numbering/data/config';
 // Icon Imports
 import { RxHamburgerMenu as HamburgerIcon } from 'react-icons/rx';
 import { ImHome as HomeIcon } from "react-icons/im";
@@ -50,8 +52,7 @@ export default function MobileNavigation() {
         openCloseMenu();
     };
 
-    const URL = "https://transferstation-0ad985e131fb.herokuapp.com/";
-    //const URL = "http://localhost:8000/";
+    const URL = config.isLocalServer ? config.url.local : config.url.heroku;
 
     const handleDownloadRequest = async () => {
         try {
@@ -169,7 +170,7 @@ export default function MobileNavigation() {
                                 to={'/permit-numbering'}
                                 onClick={setMeActie}
                             >
-                                <AdminIcon className='icon' />
+                                {false && <AdminIcon className='icon' />}
                                 Permit numbering
                             </Link>
                             <DownloadIcon title="Click to download 'permits.xlsx'" className='icon' id="download-icon" onClick={handleDownloadRequest} />

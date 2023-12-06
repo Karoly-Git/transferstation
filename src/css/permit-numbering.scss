@@ -86,7 +86,7 @@
 
             h3 {
                 color: white;
-                margin: 0 1rem 2rem;
+                margin-bottom: 2rem;
                 width: 100%;
                 font-size: 1.5rem;
                 font-weight: 600;
@@ -195,6 +195,7 @@
         .step2 {
             .wrapper {
                 width: 50%;
+                background-color: white;
             }
 
             #user-box {
@@ -263,6 +264,20 @@
                     display: inline-block;
                     width: 10rem;
                 }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .permit-numbering {
+        padding-left: 0;
+        padding-right: 0;
+
+        #frame {
+            .slide {
+                padding-left: 1rem;
+                padding-right: 1rem;
             }
         }
     }
