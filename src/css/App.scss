@@ -9,19 +9,16 @@
 
 // Default App Style
 .App {
-    height: 100vh;
-    padding-bottom: 3rem;
-    background-color: black;
-    background-color: transparent;
+    min-height: 100vh;
     background-image: url('../img/bg\ .jpg');
     background-size: cover;
     background-position: center;
 }
 
 // Page Style Imports
-@import './home';
-@import './mrf-dressing';
-@import './mrf-admin';
+@import './home.css';
+@import './mrf-dressing.css';
+@import './mrf-admin.css';
 
 // Component Style Imports
-@import './mobile-navigation';
+@import './mobile-navigation.css';

@@ -47,6 +47,9 @@
 .head-container .hamburger-box .icon:first-child {
   margin-top: -2rem;
 }
+.head-container #home-icon {
+  font-size: 1.75rem;
+}
 .head-container .hamburger-box-open .icon {
   transform: rotate(90deg);
 }

@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 // Icon Imports
 import { RxHamburgerMenu as HamburgerIcon } from 'react-icons/rx';
+import { ImHome as HomeIcon } from "react-icons/im";
 import { CgClose as CloseIcon } from 'react-icons/cg';
 import { AiOutlinePlus as PlusIcon } from 'react-icons/ai';
 import { AiOutlineMinus as MinusIcon } from 'react-icons/ai';
@@ -58,7 +59,9 @@ export default function MobileNavigation() {
                     <CloseIcon className='icon' />
                     <HamburgerIcon className='icon' />
                 </div>
-                <Link to={'/'}>Home</Link>
+                <Link to={'/'}>
+                    <HomeIcon className='icon' id='home-icon' />
+                </Link>
             </div>
 
             <ul className='menu'>
