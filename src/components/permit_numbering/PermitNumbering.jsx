@@ -24,8 +24,7 @@ export default function PermitNumbering() {
     const [permits, setPermits] = useState([]);
 
     // Permit States
-    const [nextPermitNumber, setNextPermitNumber] = useState(0);
-    const [workPermitList, setWorkPermitList] = useState(permits);
+    const [currentPermitNumber, setCurrentPermitNumber] = useState(0);
 
     // Refs
     const searchInputRef = useRef();
@@ -67,7 +66,7 @@ export default function PermitNumbering() {
                 setData(jsonData);
 
                 if (filename === 'permits') {
-                    setNextPermitNumber(jsonData.length + 1);
+                    setCurrentPermitNumber(jsonData.length + 1);
                 }
 
             } catch (error) {
@@ -120,7 +119,7 @@ export default function PermitNumbering() {
     /*
     function addWorkPermit() {
         let newPermit = {
-            permitNumber: nextPermitNumber,
+            permitNumber: currentPermitNumber,
             issuedBy: users.filter((user) => user.id === currentUserID)[0].name,
             contractor: currentContractor,
             date: new Date().toLocaleDateString(),
@@ -131,7 +130,7 @@ export default function PermitNumbering() {
         let newWorkPermitList = [...workPermitList, newPermit];
 
         setWorkPermitList([...newWorkPermitList]);
-        setNextPermitNumber((prevNumber) => prevNumber + 1);
+        setCurrentPermitNumber((prevNumber) => prevNumber + 1);
     }
     */
 
@@ -145,7 +144,7 @@ export default function PermitNumbering() {
 
     const sendPermitToBackend = async () => {
         let newPermit = {
-            permitNumber: nextPermitNumber,
+            permitNumber: currentPermitNumber,
             issuedBy: users.filter((user) => user.id === currentUserID)[0].name,
             contractor: currentContractor,
             date: new Date().toLocaleDateString(),
@@ -153,7 +152,8 @@ export default function PermitNumbering() {
             note: "-",
         };
 
-        setCurrentPermit(newPermit);
+        setCurrentPermit({ ...newPermit });
+        setCurrentPermitNumber(prevNumber => prevNumber + 1);
 
         try {
             const response = await fetch(SERVER_URL + SEND_NEW_PERMIT_PATH,
@@ -172,7 +172,7 @@ export default function PermitNumbering() {
             }
 
             const result = await response.json();
-            //console.log(result);//
+            console.log(result);
 
         } catch (error) {
             console.error('Error:', error.message);
