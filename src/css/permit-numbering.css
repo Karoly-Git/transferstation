@@ -81,6 +81,11 @@
   font-size: 1.5rem;
   font-weight: 600;
 }
+.permit-numbering #frame .step1 .wrapper {
+  display: flex;
+  background-color: white;
+  width: 100%;
+}
 .permit-numbering #frame .step1 #filter-box {
   display: flex;
   justify-content: center;
@@ -154,6 +159,9 @@
 .permit-numbering #frame .step1 #contractor-option-box::-webkit-scrollbar-corner {
   background-color: transparent;
 }
+.permit-numbering #frame .step2 .wrapper {
+  width: 50%;
+}
 .permit-numbering #frame .step2 #user-box {
   display: flex;
   flex-direction: column;
@@ -182,7 +190,7 @@
   outline: none;
   font-size: 1.25rem;
   padding: 0.5rem 1rem;
-  width: 60%;
+  width: 100%;
 }
 .permit-numbering #frame .step2 #user-box > div select {
   font-size: 1rem;
@@ -209,16 +217,4 @@
 .permit-numbering #frame .step3 #display span {
   display: inline-block;
   width: 10rem;
-}
-.permit-numbering #download-icon {
-  color: white;
-  font-size: 1.75rem;
-  position: absolute;
-  right: 2rem;
-  bottom: 2rem;
-  cursor: pointer;
-  transition: all 200ms ease-in-out;
-}
-.permit-numbering #download-icon:hover {
-  color: yellow;
 }/*# sourceMappingURL=permit-numbering.css.map */

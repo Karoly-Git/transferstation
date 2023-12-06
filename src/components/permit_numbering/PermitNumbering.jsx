@@ -3,7 +3,6 @@ import React, { useState, useRef, useEffect } from "react";
 // Icon and Image Imports
 import { IoIosSearch as SearchIcon } from "react-icons/io";
 import { MdDensitySmall as ShowAllIcon } from "react-icons/md";
-import { FaFileDownload as DownloadIcon } from "react-icons/fa";
 // Style Imports
 import "../../css/permit-numbering.css";
 // Component Imports
@@ -171,25 +170,6 @@ export default function PermitNumbering() {
         passwordInputRef.current.focus();
     }
 
-
-    const handleDownloadRequest = async () => {
-        try {
-            const response = await fetch(URL + "download-permits-file");
-            const blob = await response.blob();
-            const url = window.URL.createObjectURL(new Blob([blob]));
-            const link = document.createElement('a');
-            link.href = url;
-            link.setAttribute('download', 'permits.xlsx');
-            document.body.appendChild(link);
-            link.click();
-            link.parentNode.removeChild(link);
-        }
-
-        catch (error) {
-            console.error('Error downloading file:', error);
-        }
-    };
-
     return (
         <m.div className="page permit-numbering"
             initial={{ opacity: 0 }}
@@ -211,25 +191,27 @@ export default function PermitNumbering() {
                         <h3>Choose contractor</h3>
 
                         <div id="filter-box">
-                            <SearchIcon
-                                className="icon"
-                                id="search-icon"
-                                onClick={() => searchInputRef.current.focus()}
-                            />
-                            <input
-                                onChange={handleSearchInputChange}
-                                value={searchInputValue}
-                                type="text"
-                                ref={searchInputRef}
-                                placeholder="Search for contractor..."
-                            />
-                            {false && <ShowAllIcon
-                                className="icon show-all-icon"
-                                onClick={() => {
-                                    setIsShowAllClicked(prevState => !prevState);
-                                    setDisplayedContractors((prevContractors) => !isShowAllClicked ? [...contractors] : []);
-                                }}
-                            />}
+                            <div className="wrapper">
+                                <SearchIcon
+                                    className="icon"
+                                    id="search-icon"
+                                    onClick={() => searchInputRef.current.focus()}
+                                />
+                                <input
+                                    onChange={handleSearchInputChange}
+                                    value={searchInputValue}
+                                    type="text"
+                                    ref={searchInputRef}
+                                    placeholder="Search for contractor..."
+                                />
+                                {false && <ShowAllIcon
+                                    className="icon show-all-icon"
+                                    onClick={() => {
+                                        setIsShowAllClicked(prevState => !prevState);
+                                        setDisplayedContractors((prevContractors) => !isShowAllClicked ? [...contractors] : []);
+                                    }}
+                                />}
+                            </div>
                         </div>
 
                         <div
@@ -285,31 +267,35 @@ export default function PermitNumbering() {
                         <div id="user-box">
                             <div>
                                 <span>Name:</span>
-                                <select
-                                    ref={userSelectRef}
-                                    value={selectedUserValue}
-                                    name="users"
-                                    id="users"
-                                    onChange={handleUserOptionChange}
-                                >
-                                    {users
-                                        .sort((a, b) => a.name.localeCompare(b.name))
-                                        .map((user, index) => (
-                                            <option key={index} value={user.id}>
-                                                {user.name}
-                                            </option>
-                                        ))}
-                                </select>
+                                <div className="wrapper">
+                                    <select
+                                        ref={userSelectRef}
+                                        value={selectedUserValue}
+                                        name="users"
+                                        id="users"
+                                        onChange={handleUserOptionChange}
+                                    >
+                                        {users
+                                            .sort((a, b) => a.name.localeCompare(b.name))
+                                            .map((user, index) => (
+                                                <option key={index} value={user.id}>
+                                                    {user.name}
+                                                </option>
+                                            ))}
+                                    </select>
+                                </div>
                             </div>
                             <div
                                 className={currentUserID === 0 ? "invisible-element" : "visible-element"}>
                                 <span>Password:</span>
-                                <input
-                                    type="password"
-                                    onChange={handlePasswordInputChange}
-                                    value={passwordInputValue}
-                                    ref={passwordInputRef}
-                                />
+                                <div className="wrapper">
+                                    <input
+                                        type="password"
+                                        onChange={handlePasswordInputChange}
+                                        value={passwordInputValue}
+                                        ref={passwordInputRef}
+                                    />
+                                </div>
                             </div>
                         </div>
 
@@ -370,7 +356,6 @@ export default function PermitNumbering() {
                         </div>
                     </m.div>}
             </div>
-            <DownloadIcon className='icon' id="download-icon" onClick={handleDownloadRequest} />
         </m.div>
     );
 }

@@ -14,6 +14,7 @@ import { AiOutlineDown as DownIcon } from 'react-icons/ai';
 import { BiCube as CubeIcon } from 'react-icons/bi';
 import { TbShredder as CraneIcon } from 'react-icons/tb';
 import { CgCompress as BalerIcon } from 'react-icons/cg';
+import { FaFileDownload as DownloadIcon } from "react-icons/fa";
 
 export default function MobileNavigation() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -48,6 +49,25 @@ export default function MobileNavigation() {
         setIsMenuOpen(false);
         openCloseMenu();
     };
+
+    const handleDownloadRequest = async () => {
+        try {
+            const response = await fetch(URL + "download-permits-file");
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(new Blob([blob]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'permits.xlsx');
+            document.body.appendChild(link);
+            link.click();
+            link.parentNode.removeChild(link);
+        }
+
+        catch (error) {
+            console.error('Error downloading file:', error);
+        }
+    };
+
 
     return (
         <nav className='mobile-navigation'>
@@ -146,8 +166,10 @@ export default function MobileNavigation() {
                                 to={'/permit-numbering'}
                                 onClick={setMeActie}
                             >
-                                <AdminIcon className='icon' /> Permit numbering
+                                <AdminIcon className='icon' />
+                                Permit numbering
                             </Link>
+                            <DownloadIcon title="Click to download 'permits.xlsx'" className='icon' id="download-icon" onClick={handleDownloadRequest} />
                         </li>
                     </ul>
                 </li>

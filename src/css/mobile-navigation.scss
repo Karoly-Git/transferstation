@@ -5,6 +5,21 @@
     height: 4rem;
     width: 100%;
 
+    #home-icon {
+        font-size: 1.75rem;
+    }
+
+    #download-icon {
+        cursor: pointer;
+        margin-right: 1rem;
+        margin-left: auto;
+
+        &:hover {
+            color: yellow;
+        }
+    }
+
+
     a:hover {
         text-decoration: underline !important;
         text-underline-offset: 4px;
@@ -27,6 +42,9 @@
 }
 
 .head-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     width: 100%;
     min-height: 100%;
     background-color: rgb(1, 50, 74);
@@ -38,8 +56,8 @@
         flex-direction: column;
         width: 2rem;
         height: 2rem;
-        margin-top: 1rem;
         margin-left: 1rem;
+        margin-right: auto;
         overflow: hidden;
 
         .icon {
@@ -55,10 +73,6 @@
         }
     }
 
-    #home-icon {
-        font-size: 1.75rem;
-    }
-
     .hamburger-box-open {
         .icon {
             transform: rotate(90deg);
@@ -70,15 +84,11 @@
     }
 
     a {
-        color: white;
-        position: absolute;
-        right: 2rem;
-        top: 1.25rem;
-        //height: 4rem;
-        font-size: 1.25rem;
         display: flex;
+        justify-content: center;
         align-items: center;
         text-decoration: none;
+        margin-right: 1rem;
     }
 }
 
