@@ -51,12 +51,12 @@ export default function PermitNumbering() {
 
     // URLs
     const SERVER_URL = config.isLocalServer ? config.url.local : config.url.heroku;
-    const SEND_NEW_PERMIT_PATH = "send-new-permit";
+    const SAVE_NEW_PERMIT_PATH = "save-new-permit";
 
     useEffect(() => {
-        const fetchData = async (filename, setData) => {
+        const fetchData = async (path, setData) => {
             try {
-                const response = await fetch(SERVER_URL + filename)
+                const response = await fetch(SERVER_URL + path)
 
                 if (!response.ok) {
                     throw new Error("Network response was not ok")
@@ -65,7 +65,7 @@ export default function PermitNumbering() {
                 const jsonData = await response.json();
                 setData(jsonData);
 
-                if (filename === 'permits') {
+                if (path === 'get-permits') {
                     setCurrentPermitNumber(jsonData.length + 1);
                 }
 
@@ -77,9 +77,9 @@ export default function PermitNumbering() {
             }
         };
 
-        fetchData('contractors', setContractors);
-        fetchData('users', setUsers);
-        fetchData('permits', setPermits);
+        fetchData('get-contractors', setContractors);
+        fetchData('get-users', setUsers);
+        fetchData('get-permits', setPermits);
     }, []);
 
     function resetStates() {
@@ -120,7 +120,7 @@ export default function PermitNumbering() {
     function addWorkPermit() {
         let newPermit = {
             permitNumber: currentPermitNumber,
-            issuedBy: users.filter((user) => user.id === currentUserID)[0].name,
+            issuedBy: users.filter((user) => user.inHouseID === currentUserID)[0].name,
             contractor: currentContractor,
             date: new Date().toLocaleDateString(),
             time: new Date().toLocaleTimeString(),
@@ -145,7 +145,7 @@ export default function PermitNumbering() {
     const sendPermitToBackend = async () => {
         let newPermit = {
             permitNumber: currentPermitNumber,
-            issuedBy: users.filter((user) => user.id === currentUserID)[0].name,
+            issuedBy: users.filter((user) => user.inHouseID === currentUserID)[0].name,
             contractor: currentContractor,
             date: new Date().toLocaleDateString(),
             time: new Date().toLocaleTimeString(),
@@ -156,7 +156,7 @@ export default function PermitNumbering() {
         setCurrentPermitNumber(prevNumber => prevNumber + 1);
 
         try {
-            const response = await fetch(SERVER_URL + SEND_NEW_PERMIT_PATH,
+            const response = await fetch(SERVER_URL + SAVE_NEW_PERMIT_PATH,
                 {
                     method: 'POST',
                     mode: 'cors',
@@ -289,7 +289,7 @@ export default function PermitNumbering() {
                                         {users
                                             .sort((a, b) => a.name.localeCompare(b.name))
                                             .map((user, index) => (
-                                                <option key={index} value={user.id}>
+                                                <option key={index} value={user.inHouseID}>
                                                     {user.name}
                                                 </option>
                                             ))}
@@ -314,7 +314,7 @@ export default function PermitNumbering() {
                             <NavButton className='btn' text="back" onClick={() => setActiveSlide(1)} />
                             <NavButton
                                 className={
-                                    users.filter((user) => user.id === currentUserID)[0]
+                                    users.filter((user) => user.inHouseID === currentUserID)[0]
                                         .password === passwordInputValue
                                         ? "btn visible-element"
                                         : "btn invisible-element"
