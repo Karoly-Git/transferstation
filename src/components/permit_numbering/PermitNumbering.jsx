@@ -116,24 +116,6 @@ export default function PermitNumbering() {
         setPasswordInputValue(value);
     }
 
-    /*
-    function addWorkPermit() {
-        let newPermit = {
-            permitNumber: currentPermitNumber,
-            issuedBy: users.filter((user) => user.inHouseID === currentUserID)[0].name,
-            contractor: currentContractor,
-            date: new Date().toLocaleDateString(),
-            time: new Date().toLocaleTimeString(),
-            note: "-",
-        };
-
-        let newWorkPermitList = [...workPermitList, newPermit];
-
-        setWorkPermitList([...newWorkPermitList]);
-        setCurrentPermitNumber((prevNumber) => prevNumber + 1);
-    }
-    */
-
     function handleUserOptionChange(e) {
         let newUserID = Number(e.target.value);
         setCurrentUserID(newUserID);

@@ -61,7 +61,9 @@ export default function MobileNavigation() {
             const url = window.URL.createObjectURL(new Blob([blob]));
             const link = document.createElement('a');
             link.href = url;
-            link.setAttribute('download', 'permits.xlsx');
+            let date = new Date();
+            let fileName = date.toLocaleDateString().split('/').join('') + "_" + date.toLocaleTimeString().split(':').join('') + "_permits.xlsx";
+            link.setAttribute('download', fileName);
             document.body.appendChild(link);
             link.click();
             link.parentNode.removeChild(link);
