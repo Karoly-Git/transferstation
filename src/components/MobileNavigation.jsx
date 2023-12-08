@@ -55,22 +55,28 @@ export default function MobileNavigation() {
     const URL = config.isLocalServer ? config.url.local : config.url.heroku;
 
     const handleDownloadRequest = async () => {
-        try {
-            const response = await fetch(URL + "download-permits-file");
-            const blob = await response.blob();
-            const url = window.URL.createObjectURL(new Blob([blob]));
-            const link = document.createElement('a');
-            link.href = url;
-            let date = new Date();
-            let fileName = date.toLocaleDateString().split('/').join('') + "_" + date.toLocaleTimeString().split(':').join('') + "_permits.xlsx";
-            link.setAttribute('download', fileName);
-            document.body.appendChild(link);
-            link.click();
-            link.parentNode.removeChild(link);
-        }
+        let userImput = prompt("Download key needed!");
 
-        catch (error) {
-            console.error('Error downloading file:', error);
+        if (config.downloadKeys.includes(userImput)) {
+            try {
+                const response = await fetch(URL + "download-permits-file");
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(new Blob([blob]));
+                const link = document.createElement('a');
+                link.href = url;
+                let date = new Date();
+                let fileName = date.toLocaleDateString().split('/').join('') + "_" + date.toLocaleTimeString().split(':').join('') + "_permits.xlsx";
+                link.setAttribute('download', fileName);
+                document.body.appendChild(link);
+                link.click();
+                link.parentNode.removeChild(link);
+            }
+
+            catch (error) {
+                console.error('Error downloading file:', error);
+            }
+        } else {
+            alert("Wrong key!");
         }
     };
 
@@ -85,6 +91,7 @@ export default function MobileNavigation() {
                     <CloseIcon className='icon' />
                     <HamburgerIcon className='icon' />
                 </div>
+                <h2>Test Version</h2>
                 <Link to={'/'}>
                     <HomeIcon className='icon' id='home-icon' />
                 </Link>

@@ -177,7 +177,7 @@
 .permit-numbering #frame .step2 #user-box > div:not(:last-child) {
   margin-bottom: 2rem;
 }
-.permit-numbering #frame .step2 #user-box > div span {
+.permit-numbering #frame .step2 #user-box > div label {
   display: block;
   color: white;
   width: 5.5rem;

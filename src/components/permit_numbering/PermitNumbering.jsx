@@ -16,6 +16,7 @@ import NavButton from "./NavButton";
 
 // Animation Imports
 import { motion as m } from 'framer-motion';
+import { json } from "react-router-dom";
 
 export default function PermitNumbering() {
     // States
@@ -49,6 +50,10 @@ export default function PermitNumbering() {
     // Slide States
     const [activeSlide, setActiveSlide] = useState(1);
 
+    // Page Loading Status
+
+    const [pageLoaded, setPageLoaded] = useState(false);
+
     // URLs
     const SERVER_URL = config.isLocalServer ? config.url.local : config.url.heroku;
     const SAVE_NEW_PERMIT_PATH = "save-new-permit";
@@ -63,10 +68,11 @@ export default function PermitNumbering() {
                 }
 
                 const jsonData = await response.json();
+                //console.log(jsonData);
                 setData(jsonData);
 
                 if (path === 'get-permits') {
-                    setCurrentPermitNumber(jsonData.length + 1);
+                    setCurrentPermitNumber(jsonData.sort((a, b) => a.inHouseID - b.inHouseID).at(-1).permitNumber + 1);
                 }
 
             } catch (error) {
@@ -104,7 +110,7 @@ export default function PermitNumbering() {
         let filteredContractors = contractors.filter((contractor) => {
             const contractorName = contractor.name.toLowerCase();
             const searchValue = value.toLowerCase();
-            return contractorName.includes(searchValue);
+            return contractorName.includes(searchValue.trim());
         });
 
         setDisplayedContractors([...filteredContractors].sort((a, b) => a.name.localeCompare(b.name)));
@@ -154,7 +160,7 @@ export default function PermitNumbering() {
             }
 
             const result = await response.json();
-            console.log(result);
+            //console.log(result);
 
         } catch (error) {
             console.error('Error:', error.message);
@@ -201,7 +207,17 @@ export default function PermitNumbering() {
                                     className="icon show-all-icon"
                                     onClick={() => {
                                         setIsShowAllClicked(prevState => !prevState);
-                                        setDisplayedContractors(!isShowAllClicked ? [...contractors] : []);
+                                        //console.log(!isShowAllClicked);
+                                        //setDisplayedContractors(!isShowAllClicked ? [...contractors] : []);
+                                        let filteredContractors = contractors.filter((cont) =>
+                                            cont.name
+                                                .toLowerCase()
+                                                .includes(searchInputValue.trim().toLowerCase()),
+                                        );
+                                        //console.log(contractors);
+                                        isShowAllClicked ?
+                                            setDisplayedContractors([...contractors.sort((a, b) => a.name.localeCompare(b.name))]) :
+                                            resetStates();
                                     }}
                                 />}
                             </div>
@@ -226,7 +242,7 @@ export default function PermitNumbering() {
                                             let filteredContractors = contractors.filter((cont) =>
                                                 cont.name
                                                     .toLowerCase()
-                                                    .includes(searchInputValue.toLowerCase()),
+                                                    .includes(searchInputValue.trim().toLowerCase()),
                                             );
                                             setDisplayedContractors([...filteredContractors].sort((a, b) => a.name.localeCompare(b.name)));
                                             setCurrentContractor("");
@@ -259,7 +275,7 @@ export default function PermitNumbering() {
                         <h3>Verify it's you</h3>
                         <div id="user-box">
                             <div>
-                                <span>Name:</span>
+                                <label htmlFor='users'>Name:</label>
                                 <div className="wrapper">
                                     <select
                                         ref={userSelectRef}
@@ -280,13 +296,15 @@ export default function PermitNumbering() {
                             </div>
                             <div
                                 className={currentUserID === 0 ? "invisible-element" : "visible-element"}>
-                                <span>Password:</span>
+                                <label htmlFor="password">Password:</label>
                                 <div className="wrapper">
                                     <input
                                         type="password"
                                         onChange={handlePasswordInputChange}
                                         value={passwordInputValue}
                                         ref={passwordInputRef}
+                                        name="password"
+                                        id="password"
                                     />
                                 </div>
                             </div>
