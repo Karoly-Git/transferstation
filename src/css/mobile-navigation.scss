@@ -7,13 +7,6 @@
     height: 4rem;
     width: 100%;
 
-    h2 {
-        color: white;
-        font-weight: 100;
-        font-family: 'Share Tech Mono', monospace;
-        font-size: 1.15rem;
-    }
-
     #home-icon {
         font-size: 1.75rem;
     }
@@ -90,6 +83,13 @@
         .icon:first-child {
             margin-top: 0;
         }
+    }
+
+    h2 {
+        color: white;
+        font-weight: 100;
+        font-family: 'Share Tech Mono', monospace;
+        font-size: 1.15rem;
     }
 
     a {

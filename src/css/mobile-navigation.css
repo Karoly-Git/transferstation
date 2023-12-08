@@ -6,12 +6,6 @@
   height: 4rem;
   width: 100%;
 }
-.mobile-navigation h2 {
-  color: white;
-  font-weight: 100;
-  font-family: "Share Tech Mono", monospace;
-  font-size: 1.15rem;
-}
 .mobile-navigation #home-icon {
   font-size: 1.75rem;
 }
@@ -72,6 +66,12 @@
 }
 .head-container .hamburger-box-open .icon:first-child {
   margin-top: 0;
+}
+.head-container h2 {
+  color: white;
+  font-weight: 100;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 1.15rem;
 }
 .head-container a {
   display: flex;
