@@ -6,7 +6,7 @@
     min-height: calc(100vh - 64px); // Full vh minus menu height
     background-color: rgba(0, 0, 255, 0.2);
 
-    .cory-logo {
+    /*.cory-logo {
         margin-top: 3rem;
         width: 30rem;
     }
@@ -14,8 +14,16 @@
     .webdev-logo {
         width: 12rem;
         padding: 1rem;
+    }*/
+
+    .cory-logo {
+        display: none;
     }
 
+    .webdev-logo {
+        margin-top: 6rem;
+        width: 15rem;
+    }
 
     h1 {
         background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));

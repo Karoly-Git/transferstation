@@ -13,9 +13,10 @@ export default function Home() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
         >
-            <img
+            {<img
                 className='logo cory-logo'
-                src={coryLogo} alt="Cory logo" />
+                src={coryLogo} alt="Cory logo" />}
+
             <img
                 className='logo webdev-logo'
                 src={webdevLogo} alt="Webdev logo" />
